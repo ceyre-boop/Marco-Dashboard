@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Creator Intelligence — Marco’s Data</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#000c0d",
+              "surface-bright": "#393939",
+              "surface": "#131313",
+              "on-primary-container": "#008883",
+              "on-secondary-fixed-variant": "#92002a",
+              "on-surface-variant": "#c4c6cc",
+              "inverse-primary": "#006a66",
+              "secondary": "#ffb2b7",
+              "surface-container-highest": "#353534",
+              "secondary-fixed-dim": "#ffb2b7",
+              "on-error": "#690005",
+              "error-container": "#93000a",
+              "secondary-fixed": "#ffdadb",
+              "secondary-container": "#ff516a",
+              "tertiary-fixed-dim": "#76d5dc",
+              "inverse-on-surface": "#313030",
+              "surface-container-lowest": "#0e0e0e",
+              "surface-tint": "#00ddd6",
+              "on-tertiary-container": "#11868d",
+              "on-tertiary": "#00373a",
+              "surface-dim": "#131313",
+              "inverse-surface": "#e5e2e1",
+              "primary": "#00ddd6",
+              "on-secondary": "#67001b",
+              "on-primary": "#003735",
+              "on-background": "#e5e2e1",
+              "surface-container-high": "#2a2a2a",
+              "tertiary": "#76d5dc",
+              "on-surface": "#e5e2e1",
+              "surface-container": "#201f1f",
+              "on-secondary-fixed": "#40000d",
+              "on-tertiary-fixed-variant": "#004f53",
+              "surface-variant": "#353534",
+              "background": "#131313",
+              "on-secondary-container": "#5b0017",
+              "on-primary-fixed": "#00201e",
+              "tertiary-fixed": "#93f2f9",
+              "surface-container-low": "#1c1b1b",
+              "on-error-container": "#ffdad6",
+              "on-primary-fixed-variant": "#00504d",
+              "error": "#ffb4ab",
+              "primary-container": "#000d0c",
+              "primary-fixed": "#29fcf3",
+              "outline-variant": "#44474c",
+              "on-tertiary-fixed": "#002022",
+              "outline": "#8e9196",
+              "primary-fixed-dim": "#00ddd6"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(42, 42, 42, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .brand-gradient-text {
+            background: linear-gradient(135deg, #00ddd6 0%, #008883 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #131313;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a2a2a;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30 min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-[#131313]">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20">
+<img alt="CEO Profile" class="w-full h-full object-cover" data-alt="professional portrait of a high-end agency executive with soft cinematic lighting and a dark minimalist background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAh5XYfl7srKPaN1FbNuSgFrQt0dZ83tkiuuwENd0kQvni6iqVqmyHJ-EG8VKBhfW0qgRp7k3e2dX5zxlDzMdYZ8oFJvRuoqdxbLxt1JpLpgpdDl06ACyWGHSB29Sqzdt7tLLSGwBEEjiGZyybCte9tuj8q01OwwOnXKzLGClVhBpzQ_pstH7vbwXHVARXQEA7DM6phxh7kbFpb_qrdnb4bdtQ35HOhi7ong2H3Nu_V-Ge_qSdYRbgq3r9FI_EAzjROE8Uz-9LWdY8"/>
+</div>
+<h1 class="text-2xl font-black tracking-tighter text-[#00ddd6] uppercase font-headline">MARCO’S DATA</h1>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex gap-8 font-headline font-bold tracking-tight">
+<a class="text-[#c4c6cc] hover:bg-[#2a2a2a] transition-colors px-3 py-1 rounded-xl" href="index.html">Home</a>
+<a class="text-[#c4c6cc] hover:bg-[#2a2a2a] transition-colors px-3 py-1 rounded-xl" href="shop.html">Shop</a>
+<a class="text-[#c4c6cc] hover:bg-[#2a2a2a] transition-colors px-3 py-1 rounded-xl" href="live.html">Live</a>
+<a class="text-[#00ddd6] bg-[#00ddd6]/10 px-3 py-1 rounded-xl" href="creator.html">Creator</a>
+<a class="text-[#c4c6cc] hover:bg-[#2a2a2a] transition-colors px-3 py-1 rounded-xl" href="ai.html">AI</a>
+</nav>
+<button class="material-symbols-outlined text-[#00ddd6] hover:bg-[#2a2a2a] p-2 rounded-full transition-colors">calendar_today</button>
+</div>
+</header>
+<main class="pt-24 px-6 max-w-7xl mx-auto space-y-10">
+<!-- Hero Section: A-List Status Tracker -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 glass-card rounded-full p-8 border border-outline-variant/10 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-8">
+<span class="material-symbols-outlined text-primary/20 text-8xl rotate-12 group-hover:rotate-0 transition-transform duration-500">star</span>
+</div>
+<div class="relative z-10">
+<p class="text-on-surface-variant font-label text-xs uppercase tracking-[0.2em] mb-2">A-List Status Tracker</p>
+<h2 class="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter mb-6">42 <span class="text-primary">ELITE</span></h2>
+<div class="flex items-end gap-2">
+<div class="flex-1 bg-surface-container-highest h-3 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-on-primary-container w-[84%]"></div>
+</div>
+<span class="text-on-surface font-label font-bold">84%</span>
+</div>
+<p class="mt-4 text-on-surface-variant text-sm max-w-md">8 more creators needed to reach the Q3 Agency Milestone. Elite tier retention is currently at an all-time high.</p>
+</div>
+</div>
+<div class="glass-card rounded-full p-8 border border-outline-variant/10 flex flex-col justify-between">
+<div>
+<p class="text-on-surface-variant font-label text-xs uppercase tracking-[0.2em] mb-1">Global Health</p>
+<p class="font-headline text-4xl font-bold text-secondary">92.4</p>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-center text-xs">
+<span class="text-on-surface-variant">Active Hours</span>
+<span class="text-primary font-bold">+12%</span>
+</div>
+<div class="flex justify-between items-center text-xs">
+<span class="text-on-surface-variant">Engagement</span>
+<span class="text-primary font-bold">+5.2%</span>
+</div>
+<div class="flex justify-between items-center text-xs">
+<span class="text-on-surface-variant">Burnout Risk</span>
+<span class="text-secondary font-bold">Low</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Alerts Section -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Level Up Alerts -->
+<div class="bg-surface-container-low rounded-full p-6 border-l-4 border-primary">
+<div class="flex items-center gap-4">
+<div class="bg-primary/10 p-3 rounded-full">
+<span class="material-symbols-outlined text-primary">trending_up</span>
+</div>
+<div>
+<h3 class="font-headline font-bold text-lg">Level-Up Alerts</h3>
+<p class="text-on-surface-variant text-xs">3 creators qualified for Tier 4 'Elite' status this morning.</p>
+</div>
+</div>
+<div class="mt-6 flex gap-3 overflow-x-auto pb-2">
+<div class="flex-none flex items-center gap-3 bg-surface-container-high px-4 py-2 rounded-full border border-primary/20">
+<img class="w-8 h-8 rounded-full" data-alt="vibrant portrait of a young woman with neon city lights in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhvdqGSQgLmt7KXMxhHDt1K67RPdHPfDOqzMq0Rxv4DuoKHCG5xrkn_RPgtMRUdRdg-vt-LsnE2rJXRuGLud2VZ0Mg9nJOqhVn_fv8J3dusxLENsaTb9LMnKIE10dOOSRJkVOvKGT6pbI2w68J8LH_tsI7JMX0tx_C1Vs3voqxBSREVfcEyDMhOKVvyQRmVfYhDF2zlrZI3X6IrcjCm2Zz33ZU-EyGzFOMbcOOcfRHSRxOHVurGSx3YncJEjlk-2fvc2i80QNq2EA"/>
+<span class="text-xs font-bold">@sarah_vibe</span>
+</div>
+<div class="flex-none flex items-center gap-3 bg-surface-container-high px-4 py-2 rounded-full border border-primary/20">
+<img class="w-8 h-8 rounded-full" data-alt="portrait of a young man with trendy street wear style and cinematic outdoor lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdVSqbznViSlNggv__LhnyDBGTgkCXEqwDdwm6XaWGvnyfoXH6kVrT8T69dMTfXaOh8d3h8uWVYD0bD1VmiO_4jsC-cioZJH3q3dEVe8_s1NQNSguQhb__4lyWvr3tjY6n9neBCbHhVrCGpJZAceA9OnRFTEHvbzYGWhXceHer4My9CrRcAS7l2Iq0lQ9KIqR7dWsK8_TSdkfmoyk9ntYq4MspLcE7oCm8jSC5VDmtONhKeCDzwOj9yo7__lnjTUQ9WInx-05xkYA"/>
+<span class="text-xs font-bold">@alex.stream</span>
+</div>
+</div>
+</div>
+<!-- At Risk Alerts -->
+<div class="bg-surface-container-low rounded-full p-6 border-l-4 border-secondary">
+<div class="flex items-center gap-4">
+<div class="bg-secondary/10 p-3 rounded-full">
+<span class="material-symbols-outlined text-secondary">warning</span>
+</div>
+<div>
+<h3 class="font-headline font-bold text-lg">At-Risk Alerts</h3>
+<p class="text-on-surface-variant text-xs">5 creators are falling behind on scheduled streaming hours.</p>
+</div>
+</div>
+<div class="mt-6 flex gap-3 overflow-x-auto pb-2">
+<div class="flex-none flex items-center gap-3 bg-surface-container-high px-4 py-2 rounded-full border border-secondary/20">
+<img class="w-8 h-8 rounded-full" data-alt="fashionable young woman in a studio setting with soft moody lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALG8yjEuCSPp7vLTT-PI9eMcFTKC4xVuKGjPHz7Z-hqcPF0gFFkJQbM0mHK--m6h6l6YxMTOnFzUCr3-m4YaqAApH1ea50x_kfKmUbfmCFw1FbLAxRjnWD2FDlPjcxjre03NfRU5e36JSp8zFp80x_ROYCSTU6_N0r3fYvjCJCyJ3R-AAWYG4zmj5TjkIz_EXaLjYRNnr6lnAGNFc3OYxOIiJ3RuuN2_saMjYj2AW65g9bcdqpoWoA3zfUXYwXcUBwUKxkfxp8FJ8"/>
+<span class="text-xs font-bold">@jade_luxe</span>
+<span class="text-[10px] bg-secondary/20 text-secondary px-2 py-0.5 rounded-full">-4h</span>
+</div>
+<div class="flex-none flex items-center gap-3 bg-surface-container-high px-4 py-2 rounded-full border border-secondary/20">
+<img class="w-8 h-8 rounded-full" data-alt="close up of a stylish man with professional beard grooming and neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLy8P90Wg5OqBz4tahupH7P-u_v992C1EHlFXfrx2910KnxsuKFV9TUX6YSvd4XSGXZx166QV0Q_aBrvsjfAQy3geQAGWTPPbA1TrrhggqJgQ35Rz1Ct1Mz7KL65jY0dN3OFIe-4igONqm9HUwLbz4RUsC_zn2RaNu7W6L6qcrNlbmJWRhndKpuKYswcCepXnkCqNjlJvI_SYhh4TJo4GV6QKjlPCoM1OzDlkctaTrEIJEKPTN3v_6w3NLS1xxWXxGqEkjuCftRb0"/>
+<span class="text-xs font-bold">@marcus_tech</span>
+<span class="text-[10px] bg-secondary/20 text-secondary px-2 py-0.5 rounded-full">-2h</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Creator Profile Grid -->
+<section class="space-y-6">
+<div class="flex justify-between items-end">
+<h3 class="font-headline text-2xl font-extrabold tracking-tight">Active Roster Intelligence</h3>
+<button class="text-primary font-label text-xs font-bold uppercase tracking-widest hover:opacity-80">View All 152</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="glass-card rounded-full p-6 border border-outline-variant/10 group hover:bg-surface-container-high transition-all duration-300">
+<div class="flex items-center gap-4 mb-6">
+<div class="relative">
+<img class="w-16 h-16 rounded-full object-cover border-2 border-primary group-hover:scale-105 transition-transform" data-alt="portrait of an expressive young woman with creative makeup and vibrant studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkik2yNjdWvBrgEissK1ByajXrinM0w5z1_WnSldOnT3TzM_ArvJVeqqWmdE4HEQ13yzxZGnfTv9DrMjQdYja9R1vV5846FeshkchCQERJaMPtz6mxBxugkFly6jLgpY1fu3qOahKD-KsGppY8GYn7CNbFg39l7-vkyCF9laYOYrYKD2aWtfJU2aI6B3xox4FLdD2KsPyZoD57t-o4hqdv0anO7llh9nnPVdw6x3RvMzzS6ydiGFsOAdJQRMduMpCJz0GYUdt8Tss"/>
+<div class="absolute -bottom-1 -right-1 bg-primary text-on-primary text-[10px] font-bold px-2 py-0.5 rounded-full">UP</div>
+</div>
+<div class="flex-1">
+<h4 class="font-headline font-bold text-lg">@zoe_creatives</h4>
+<p class="text-on-surface-variant text-xs font-medium uppercase tracking-tighter">Level 4 Elite</p>
+</div>
+<div class="text-right">
+<p class="text-primary font-headline font-extrabold text-2xl">98</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest">Score</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest/50 p-4 rounded-3xl">
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest mb-3">3-Month Trend</p>
+<div class="h-12 flex items-end gap-1 px-1">
+<div class="flex-1 bg-primary/20 h-[40%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-[55%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-[45%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-[70%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/40 h-[65%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/60 h-[85%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary h-[100%] rounded-t-sm"></div>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass-card rounded-full p-6 border border-outline-variant/10 group hover:bg-surface-container-high transition-all duration-300">
+<div class="flex items-center gap-4 mb-6">
+<div class="relative">
+<img class="w-16 h-16 rounded-full object-cover border-2 border-outline-variant/30" data-alt="sharp portrait of a modern young man in a minimalist setting with natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6nhGZ4-mAqgt-fqiLpmb8PMx1u_DVT0SfMqa7FhWi2ddSq_sXIh9Uk4za6eSwy__HwlSPlKG8gmgUrj1mFeqz2ZhtPOkLrdKwXQUR1658lzLZo5m16zjMVSNKh_rpN9eFhj7nEAaQO0SeK_PFpvjvIEoy82tHZldc7egJEGDckvL1u5FsozXoSirRgBfLlq_gZ4hHGn9HcO6hPYP8mpl25k0o1x4jiiT_yiG7z6sA4BvDSwj3H0c2yvRRd-dI7cYQfoYrH-V3Dcw"/>
+</div>
+<div class="flex-1">
+<h4 class="font-headline font-bold text-lg">@danny.tech</h4>
+<p class="text-on-surface-variant text-xs font-medium uppercase tracking-tighter">Level 3 Pro</p>
+</div>
+<div class="text-right">
+<p class="text-on-surface font-headline font-extrabold text-2xl">84</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest">Score</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest/50 p-4 rounded-3xl">
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest mb-3">3-Month Trend</p>
+<div class="h-12 flex items-end gap-1 px-1">
+<div class="flex-1 bg-on-surface-variant/20 h-[60%] rounded-t-sm"></div>
+<div class="flex-1 bg-on-surface-variant/20 h-[65%] rounded-t-sm"></div>
+<div class="flex-1 bg-on-surface-variant/20 h-[62%] rounded-t-sm"></div>
+<div class="flex-1 bg-on-surface-variant/20 h-[68%] rounded-t-sm"></div>
+<div class="flex-1 bg-on-surface-variant/20 h-[75%] rounded-t-sm"></div>
+<div class="flex-1 bg-on-surface-variant/20 h-[72%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary h-[82%] rounded-t-sm shadow-[0_0_10px_rgba(0,221,214,0.4)]"></div>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="glass-card rounded-full p-6 border border-secondary/30 group bg-secondary/5 transition-all duration-300">
+<div class="flex items-center gap-4 mb-6">
+<div class="relative">
+<img class="w-16 h-16 rounded-full object-cover border-2 border-secondary" data-alt="fashion portrait of a young woman with intense gaze and dramatic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAH0C3HkXMMU86zaYoj7wnMQXUZHNBoeoLMTlcjst3VDk5w9wyFjsiM0S-8Eb5O-LjvdOtdAMzNTI4YBeU8wK1N_pTW5HUUjcmp9FWEBQSIq8rGnNb1vpC5E64eD6qADVlC6UESpoDwxWM-hSZuK2IBE6pTpRPj4XjTwWcUYTBge_dxT6k1o4a4PnoPCiAkbeZ6Ehy9u58DHCoNFt1zair3nSMu_Zwm-qtO_UpNirYU-9N2gp94xNhUboremD3Jo5cWvFz6ljb4ujM"/>
+<div class="absolute -top-1 -right-1 bg-secondary text-on-secondary text-[10px] font-bold px-2 py-0.5 rounded-full">RISK</div>
+</div>
+<div class="flex-1">
+<h4 class="font-headline font-bold text-lg">@mina_official</h4>
+<p class="text-secondary text-xs font-bold uppercase tracking-tighter">Level 2 Starter</p>
+</div>
+<div class="text-right">
+<p class="text-secondary font-headline font-extrabold text-2xl">41</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest">Score</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest/50 p-4 rounded-3xl">
+<p class="text-[10px] text-secondary uppercase tracking-widest mb-3">Urgent Action Required</p>
+<div class="h-12 flex items-end gap-1 px-1 opacity-50">
+<div class="flex-1 bg-secondary h-[90%] rounded-t-sm"></div>
+<div class="flex-1 bg-secondary h-[80%] rounded-t-sm"></div>
+<div class="flex-1 bg-secondary h-[60%] rounded-t-sm"></div>
+<div class="flex-1 bg-secondary h-[50%] rounded-t-sm"></div>
+<div class="flex-1 bg-secondary h-[45%] rounded-t-sm"></div>
+<div class="flex-1 bg-secondary h-[35%] rounded-t-sm"></div>
+<div class="flex-1 bg-secondary h-[20%] rounded-t-sm"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Insights Bento -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-6 pb-12">
+<div class="md:col-span-2 glass-card rounded-full p-8 border border-outline-variant/10">
+<h3 class="font-headline font-bold text-xl mb-4">Engagement Distribution</h3>
+<div class="flex items-center gap-6">
+<div class="w-32 h-32 rounded-full border-[12px] border-primary/20 relative flex items-center justify-center">
+<div class="absolute inset-0 border-[12px] border-primary rounded-full" style="clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 70%);"></div>
+<span class="font-headline font-extrabold text-xl">74%</span>
+</div>
+<ul class="space-y-2 flex-1">
+<li class="flex items-center gap-2 text-xs">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-on-surface-variant">Video Shares</span>
+<span class="ml-auto font-bold">42%</span>
+</li>
+<li class="flex items-center gap-2 text-xs">
+<span class="w-2 h-2 rounded-full bg-primary/60"></span>
+<span class="text-on-surface-variant">Live Gifts</span>
+<span class="ml-auto font-bold">32%</span>
+</li>
+<li class="flex items-center gap-2 text-xs">
+<span class="w-2 h-2 rounded-full bg-primary/20"></span>
+<span class="text-on-surface-variant">Comments</span>
+<span class="ml-auto font-bold">26%</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="glass-card rounded-full p-8 border border-outline-variant/10 flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-4">rocket_launch</span>
+<p class="font-headline font-bold text-2xl">12%</p>
+<p class="text-on-surface-variant text-[10px] uppercase tracking-widest">Avg Growth</p>
+</div>
+<div class="glass-card rounded-full p-8 border border-outline-variant/10 flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-secondary text-4xl mb-4">timer</span>
+<p class="font-headline font-bold text-2xl">4.2h</p>
+<p class="text-on-surface-variant text-[10px] uppercase tracking-widest">Daily Stream</p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#1c1b1b]/80 backdrop-blur-xl md:hidden shadow-[0_-8px_40px_rgba(0,0,0,0.5)] rounded-t-3xl">
+<a class="flex flex-col items-center justify-center text-[#c4c6cc] opacity-60" href="index.html">
+<span class="material-symbols-outlined mb-1">dashboard</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#c4c6cc] opacity-60" href="shop.html">
+<span class="material-symbols-outlined mb-1">shopping_bag</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest">Shop</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#c4c6cc] opacity-60" href="live.html">
+<span class="material-symbols-outlined mb-1">sensors</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest">Live</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#00ddd6] bg-[#00ddd6]/10 rounded-xl px-3 py-1 scale-90 duration-150" href="creator.html">
+<span class="material-symbols-outlined mb-1">group</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest">Creator</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#c4c6cc] opacity-60" href="ai.html">
+<span class="material-symbols-outlined mb-1">psychology</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest">AI</span>
+</a>
+</nav>
+</body></html>
