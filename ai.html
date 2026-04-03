@@ -45,27 +45,35 @@
                     </div>
                     <div>
                         <p class="text-sm font-bold text-gray-900">Monthly Momentum Analysis</p>
-                        <p class="text-[10px] text-gray-500 font-bold uppercase">Generated 2h ago</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-4 p-3 hover:bg-gray-50 rounded-xl transition-colors cursor-pointer border border-transparent hover:border-gray-100">
-                    <div class="p-2 bg-pink-50 rounded-lg text-[#E91E63]">
-                        <span class="material-symbols-outlined text-sm">warning</span>
-                    </div>
-                    <div>
-                        <p class="text-sm font-bold text-gray-900">Risk Mitigation Protocol</p>
-                        <p class="text-[10px] text-gray-500 font-bold uppercase">Generated 1d ago</p>
+                        <p class="text-[10px] text-gray-500 font-bold uppercase last-synced">Generated 2h ago</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Command Input -->
-        <div class="glass-card mx-2 p-4">
+        <!-- Automation Triggers -->
+        <div class="glass-card mx-2 p-6 mb-8">
+            <h3 class="font-extrabold text-gray-900 mb-4">Automated Reporting</h3>
+            <div class="flex flex-col gap-3">
+                <button id="btn-friday-wrap" class="w-full py-3 bg-[#E91E63] text-white rounded-xl font-bold text-sm shadow-sm hover:opacity-90 transition-all flex justify-center items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">calendar_today</span> Generate Friday Wrap
+                </button>
+                <button id="btn-monday-briefing" class="w-full py-3 bg-[#E91E63] text-white rounded-xl font-bold text-sm shadow-sm hover:opacity-90 transition-all flex justify-center items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">event</span> Generate Monday Briefing
+                </button>
+                <button id="btn-manual-report" class="w-full py-3 bg-gray-900 text-white rounded-xl font-bold text-sm shadow-sm hover:opacity-90 transition-all flex justify-center items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">bolt</span> Generate Report Now
+                </button>
+            </div>
+        </div>
+
+        <!-- Brand Deal Logger -->
+        <div class="glass-card mx-2 p-4 mb-32">
+            <h3 class="font-extrabold text-gray-900 mb-2 px-1">Brand Deal Logger</h3>
             <div class="flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-2 border border-gray-100">
-                <input type="text" placeholder="Ask GPT-5 anything..." class="bg-transparent flex-1 border-none focus:ring-0 text-sm font-medium">
-                <button class="w-8 h-8 bg-[#E91E63] rounded-lg flex items-center justify-center text-white shadow-sm hover:opacity-90 transition-opacity">
-                    <span class="material-symbols-outlined text-sm text-white">send</span>
+                <input id="input-brand-logger" type="text" placeholder="E.g. Just signed Sony for 15k..." class="bg-transparent flex-1 border-none focus:ring-0 text-sm font-medium">
+                <button id="btn-brand-logger" class="w-8 h-8 bg-gray-900 rounded-lg flex items-center justify-center text-white shadow-sm hover:opacity-90 transition-opacity">
+                    <span class="material-symbols-outlined text-sm text-white">add_task</span>
                 </button>
             </div>
         </div>
@@ -94,5 +102,10 @@
             <span class="text-[8px] font-bold uppercase mt-1 tracking-tighter">AI</span>
         </a>
     </nav>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/command-center.js"></script>
 </body>
 </html>
