@@ -74,8 +74,11 @@
     </script>
 <style>
         .glass-card {
-            background: rgba(42, 42, 42, 0.6);
-            backdrop-filter: blur(20px);
+            background: rgba(42, 42, 42, 0.4);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
         }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
@@ -268,6 +271,37 @@
 </div>
 </div>
 </div>
+<section class="mt-8 mb-12">
+    <div class="flex items-center justify-between mb-6 px-4">
+        <h2 class="text-[10px] font-bold tracking-widest text-[#c4c6cc] uppercase font-label opacity-60">Intelligence Report History</h2>
+    </div>
+    <div class="glass-card rounded-[2rem] overflow-hidden border border-white/5 mx-2">
+        <table class="w-full text-left border-collapse">
+            <thead>
+                <tr class="bg-white/5 text-[9px] font-bold tracking-widest text-[#c4c6cc] opacity-40 uppercase">
+                    <th class="px-6 py-4">Report Name</th>
+                    <th class="px-6 py-4">Generated</th>
+                    <th class="px-6 py-4">Status</th>
+                    <th class="px-6 py-4">Action</th>
+                </tr>
+            </thead>
+            <tbody class="text-[11px] text-[#e3e2e6]">
+                <tr class="border-t border-white/5 hover:bg-white/5 transition-colors">
+                    <td class="px-6 py-4 font-bold">CEO Weekly Momentum</td>
+                    <td class="px-6 py-4 opacity-60">Apr 2, 5:45 PM</td>
+                    <td class="px-6 py-4"><span class="px-2 py-0.5 bg-[#00ddd6]/20 text-[#00ddd6] rounded-full text-[9px] font-bold uppercase">Ready</span></td>
+                    <td class="px-6 py-4"><span class="material-symbols-outlined text-sm cursor-pointer hover:text-[#00ddd6]">download</span></td>
+                </tr>
+                <tr class="border-t border-white/5 hover:bg-white/5 transition-colors">
+                    <td class="px-6 py-4 font-bold">Creator Health Index</td>
+                    <td class="px-6 py-4 opacity-60">Apr 2, 12:30 PM</td>
+                    <td class="px-6 py-4"><span class="px-2 py-0.5 bg-[#00ddd6]/20 text-[#00ddd6] rounded-full text-[9px] font-bold uppercase">Ready</span></td>
+                    <td class="px-6 py-4"><span class="material-symbols-outlined text-sm cursor-pointer hover:text-[#00ddd6]">download</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
 </main>
 <!-- BottomNavBar -->
 <footer class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#1c1b1b]/80 backdrop-blur-xl md:hidden">
