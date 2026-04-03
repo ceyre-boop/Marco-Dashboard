@@ -1,427 +1,109 @@
 <!DOCTYPE html>
-
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>TikTok Shop Analytics | MARCO’S DATA</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              "tertiary-container": "#000c0d",
-              "surface-bright": "#393939",
-              "surface": "#131313",
-              "on-primary-container": "#008883",
-              "on-secondary-fixed-variant": "#92002a",
-              "on-surface-variant": "#c4c6cc",
-              "inverse-primary": "#006a66",
-              "secondary": "#ffb2b7",
-              "surface-container-highest": "#353534",
-              "secondary-fixed-dim": "#ffb2b7",
-              "on-error": "#690005",
-              "error-container": "#93000a",
-              "secondary-fixed": "#ffdadb",
-              "secondary-container": "#ff516a",
-              "tertiary-fixed-dim": "#76d5dc",
-              "inverse-on-surface": "#313030",
-              "surface-container-lowest": "#0e0e0e",
-              "surface-tint": "#00ddd6",
-              "on-tertiary-container": "#11868d",
-              "on-tertiary": "#00373a",
-              "surface-dim": "#131313",
-              "inverse-surface": "#e5e2e1",
-              "primary": "#00ddd6",
-              "on-secondary": "#67001b",
-              "on-primary": "#003735",
-              "on-background": "#e5e2e1",
-              "surface-container-high": "#2a2a2a",
-              "tertiary": "#76d5dc",
-              "on-surface": "#e5e2e1",
-              "surface-container": "#201f1f",
-              "on-secondary-fixed": "#40000d",
-              "on-tertiary-fixed-variant": "#004f53",
-              "surface-variant": "#353534",
-              "background": "#131313",
-              "on-secondary-container": "#5b0017",
-              "on-primary-fixed": "#00201e",
-              "tertiary-fixed": "#93f2f9",
-              "surface-container-low": "#1c1b1b",
-              "on-error-container": "#ffdad6",
-              "on-primary-fixed-variant": "#00504d",
-              "error": "#ffb4ab",
-              "primary-container": "#000d0c",
-              "primary-fixed": "#29fcf3",
-              "outline-variant": "#44474c",
-              "on-tertiary-fixed": "#002022",
-              "outline": "#8e9196",
-              "primary-fixed-dim": "#00ddd6"
-            },
-            fontFamily: {
-              "headline": ["Manrope"],
-              "body": ["Inter"],
-              "label": ["Inter"]
-            },
-            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
-          },
-        },
-      }
-    </script>
-<style>
-      .material-symbols-outlined {
-        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-      }
-      .glass-card {
-        background: rgba(42, 42, 42, 0.4);
-        backdrop-filter: blur(24px);
-        -webkit-backdrop-filter: blur(24px);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-      }
-      body {
-        background-color: #131313;
-        color: #e5e2e1;
-        font-family: 'Inter', sans-serif;
-      }
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Momentum - TABOOST</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; }
+        .glass-card { background: white; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-radius: 12px; }
     </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-  </head>
-<body class="min-h-screen pb-24 md:pb-0 md:pt-20">
-<!-- TopAppBar -->
-<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-[#131313]">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary">
-<img alt="CEO Profile" class="w-full h-full object-cover" data-alt="Close-up portrait of a sharp, modern male executive in a dark tech-office environment with teal accent lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmxX9tFRPz3k62-xf-WflQyL6XnWZj3_aRb8zjt8a9zzXoIuWW2WlB1i-iGGpJr2Hzsu84oVjitd9KujZTz8NJr0yuTNbn9166egCuUzD71l3cypnJC_P7XEd5Fxi1wGBoaBTTzA3KJUqKaXnWQJ8uoHK2hwuGPaKmL3E50qeM0KPU5dt9i8aadAH62-wv86pK3PB2G0fe1y5ZZ2eVTHwVk7zJfD33cpBkX8oXnQsCyOAq6FfdI9gEfFe8A2-gB2Mr1TqbKJ-ZXQ0"/>
-</div>
-<h1 class="text-2xl font-black tracking-tighter text-[#00ddd6] uppercase font-headline">MARCO’S DATA</h1>
-</div>
-<nav class="hidden md:flex gap-8 items-center">
-<a class="text-[#c4c6cc] font-label text-sm font-medium uppercase tracking-widest hover:text-[#00ddd6] transition-colors" href="index.html">Home</a>
-<a class="text-[#00ddd6] font-label text-sm font-medium uppercase tracking-widest" href="shop.html">Shop</a>
-<a class="text-[#c4c6cc] font-label text-sm font-medium uppercase tracking-widest hover:text-[#00ddd6] transition-colors" href="live.html">Live</a>
-<a class="text-[#c4c6cc] font-label text-sm font-medium uppercase tracking-widest hover:text-[#00ddd6] transition-colors" href="creator.html">Creator</a>
-<a class="text-[#c4c6cc] font-label text-sm font-medium uppercase tracking-widest hover:text-[#00ddd6] transition-colors" href="ai.html">AI</a>
-</nav>
-<button class="material-symbols-outlined text-[#00ddd6] p-2 hover:bg-[#2a2a2a] transition-colors rounded-xl">calendar_today</button>
-</header>
-<main class="max-w-7xl mx-auto px-6 py-8">
-<!-- Hero Metrics: Monthly Trend -->
-<section class="mb-12">
-<div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-8">
-<div>
-<span class="text-on-surface-variant font-label text-xs uppercase tracking-[0.2em]">Growth Intelligence</span>
-<h2 class="text-5xl md:text-7xl font-headline font-extrabold tracking-tighter mt-2 text-on-surface">SHOP <span class="text-primary">MOMENTUM</span></h2>
-</div>
-<div class="flex gap-4">
-<div class="glass-card p-6 rounded-xl border-l-4 border-primary">
-<span class="text-on-surface-variant text-xs uppercase font-label tracking-widest">Mar GMV</span>
-<div class="text-3xl font-headline font-bold">$2.48M</div>
-<div class="flex items-center gap-1 text-primary text-sm font-bold mt-1">
-<span class="material-symbols-outlined text-sm">trending_up</span>
-                            +18.4% MoM
+</head>
+<body class="pb-24">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-100 px-6 py-4 flex justify-between items-center sticky top-0 z-50">
+        <button class="material-symbols-outlined text-gray-600">menu</button>
+        <span class="font-black text-2xl tracking-tighter text-[#E91E63]">TABOOST</span>
+        <div class="flex items-center gap-3">
+            <div class="text-right hidden sm:block">
+                <p class="text-sm font-bold text-gray-900">Marco</p>
+                <p class="text-[10px] text-gray-500 font-bold uppercase">CEO</p>
+            </div>
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcMQzgLo6UP_Z-FIHPA0gYtl3bOaHRJu8Cf0L6dSOfPs7fp9mwZiExtKcPMXsSmXJRdBEcCO02cjhMrLFrnf2qA8uc_OKv7yIG8_2YlfZeuUPjpCT3hW96yeca5bWavMdUcKXQQxM5eHk0B4AtyMHYRZ_TdzJmEWnj_yjJZkuL7kHqAOERm4wtU1Pscw48ud20VD-R8vxRxCc-f8qJwjcp2eDF8ILoFA25F59jAZkJaKGdBV1BxzlihtU2QgM_R762HOtvw53Mifo" class="w-10 h-10 rounded-full border border-gray-100" alt="Marco Profile">
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 pt-8">
+        <h1 class="text-2xl font-extrabold text-gray-900 mb-6 px-2">Shop Momentum</h1>
+
+        <!-- Metrics Grid -->
+        <div class="grid grid-cols-2 gap-4 px-2 mb-8">
+            <div class="glass-card p-4">
+                <p class="text-[11px] font-bold text-gray-500 uppercase tracking-wider">Total GMV</p>
+                <p class="text-2xl font-extrabold text-[#E91E63] mt-1 line-gmv">$8.95M</p>
+                <p class="text-[10px] text-green-600 font-bold mt-1">↑ 12.5% vs LW</p>
+            </div>
+            <div class="glass-card p-4">
+                <p class="text-[11px] font-bold text-gray-500 uppercase tracking-wider">Active Products</p>
+                <p class="text-2xl font-extrabold text-gray-900 mt-1">1,248</p>
+                <p class="text-[10px] text-gray-500 font-medium mt-1">Across 15 categories</p>
+            </div>
+        </div>
+
+        <!-- Leaderboard -->
+        <div class="glass-card mx-2 p-6">
+            <h3 class="font-extrabold text-gray-900 mb-4">Top Performing Creators</h3>
+            <div class="space-y-4">
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-[#E91E63] font-bold text-xs">AB</div>
+                        <div>
+                            <p class="text-sm font-bold text-gray-900">Allee Baray</p>
+                            <p class="text-[10px] text-gray-500 font-bold uppercase">Beauty & Lifestyle</p>
                         </div>
-</div>
-</div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4 h-32">
-<div class="bg-surface-container-low rounded-xl p-4 flex flex-col justify-end">
-<div class="text-on-surface-variant text-[10px] uppercase font-bold tracking-widest">Jan Performance</div>
-<div class="text-xl font-headline font-bold text-outline">$1.82M</div>
-<div class="w-full bg-outline-variant/20 h-2 mt-2 rounded-full overflow-hidden">
-<div class="bg-outline-variant h-full w-[60%]"></div>
-</div>
-</div>
-<div class="bg-surface-container-low rounded-xl p-4 flex flex-col justify-end">
-<div class="text-on-surface-variant text-[10px] uppercase font-bold tracking-widest">Feb Performance</div>
-<div class="text-xl font-headline font-bold text-outline">$2.09M</div>
-<div class="w-full bg-outline-variant/20 h-2 mt-2 rounded-full overflow-hidden">
-<div class="bg-outline-variant h-full w-[75%]"></div>
-</div>
-</div>
-<div class="bg-surface-container-high rounded-xl p-4 flex flex-col justify-end border-b-2 border-primary">
-<div class="text-primary text-[10px] uppercase font-bold tracking-widest">Mar (Peak)</div>
-<div class="text-3xl font-headline font-bold text-on-surface">$2.48M</div>
-<div class="w-full bg-primary/20 h-2 mt-2 rounded-full overflow-hidden">
-<div class="bg-primary h-full w-full"></div>
-</div>
-</div>
-</div>
-</section>
-<!-- Bento Grid Main Content -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-<!-- Leaderboard Table (8 cols) -->
-<div class="lg:col-span-8 bg-surface-container-low rounded-2xl overflow-hidden">
-<div class="p-6 border-b border-outline-variant/10 flex justify-between items-center">
-<h3 class="font-headline font-bold text-xl">Top Performers</h3>
-<div class="flex gap-2">
-<span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded-full uppercase tracking-widest">TaP Leaders</span>
-<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-[10px] font-bold rounded-full uppercase tracking-widest">Live</span>
-</div>
-</div>
-<div class="overflow-x-auto">
-<table class="w-full text-left border-collapse">
-<thead>
-<tr class="bg-surface-container-highest/50">
-<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Creator</th>
-<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant text-right">Shop Sales</th>
-<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant text-right">Live GMV</th>
-<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant text-right">Status</th>
-</tr>
-</thead>
-<tbody class="divide-y divide-outline-variant/5">
-<tr class="hover:bg-surface-container-high transition-colors group">
-<td class="px-6 py-4 flex items-center gap-3">
-<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xs">A</div>
-<span class="font-medium">Alex Rivera</span>
-</td>
-<td class="px-6 py-4 text-right font-headline font-bold">$428,200</td>
-<td class="px-6 py-4 text-right text-on-surface-variant">$192,000</td>
-<td class="px-6 py-4 text-right">
-<span class="text-primary text-xs font-bold">Trending</span>
-</td>
-</tr>
-<tr class="bg-surface-container-lowest hover:bg-surface-container-high transition-colors group">
-<td class="px-6 py-4 flex items-center gap-3">
-<div class="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-secondary font-bold text-xs">J</div>
-<span class="font-medium">Jordan Smith</span>
-</td>
-<td class="px-6 py-4 text-right font-headline font-bold">$381,400</td>
-<td class="px-6 py-4 text-right text-on-surface-variant">$244,100</td>
-<td class="px-6 py-4 text-right">
-<span class="text-secondary text-xs font-bold">Top Live</span>
-</td>
-</tr>
-<tr class="hover:bg-surface-container-high transition-colors group">
-<td class="px-6 py-4 flex items-center gap-3">
-<div class="w-8 h-8 rounded-full bg-tertiary/20 flex items-center justify-center text-tertiary font-bold text-xs">M</div>
-<span class="font-medium">Mila K.</span>
-</td>
-<td class="px-6 py-4 text-right font-headline font-bold">$292,000</td>
-<td class="px-6 py-4 text-right text-on-surface-variant">$88,500</td>
-<td class="px-6 py-4 text-right">
-<span class="text-on-surface-variant text-xs font-bold">Consistent</span>
-</td>
-</tr>
-<tr class="bg-surface-container-lowest hover:bg-surface-container-high transition-colors group">
-<td class="px-6 py-4 flex items-center gap-3">
-<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xs">T</div>
-<span class="font-medium">TechUnboxed</span>
-</td>
-<td class="px-6 py-4 text-right font-headline font-bold">$210,900</td>
-<td class="px-6 py-4 text-right text-on-surface-variant">$15,000</td>
-<td class="px-6 py-4 text-right">
-<span class="text-primary text-xs font-bold">Rising</span>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<!-- Commission Donut (4 cols) -->
-<div class="lg:col-span-4 glass-card rounded-2xl p-6 flex flex-col items-center justify-center relative overflow-hidden">
-<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary"></div>
-<h3 class="font-headline font-bold text-xl mb-8 w-full">Commission Stream</h3>
-<div class="relative w-48 h-48 rounded-full border-[16px] border-surface-container-highest flex items-center justify-center">
-<div class="absolute inset-[-16px] rounded-full border-[16px] border-primary border-r-transparent border-b-transparent rotate-45"></div>
-<div class="absolute inset-[-16px] rounded-full border-[16px] border-secondary border-l-transparent border-t-transparent -rotate-12"></div>
-<div class="text-center">
-<span class="text-on-surface-variant text-[10px] uppercase font-bold tracking-widest">Avg Rate</span>
-<div class="text-4xl font-headline font-black">18.4%</div>
-</div>
-</div>
-<div class="mt-8 space-y-3 w-full">
-<div class="flex justify-between items-center text-xs">
-<span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-primary"></span> Shop Affiliate</span>
-<span class="font-bold">62%</span>
-</div>
-<div class="flex justify-between items-center text-xs">
-<span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-secondary"></span> Live Stream</span>
-<span class="font-bold">28%</span>
-</div>
-<div class="flex justify-between items-center text-xs">
-<span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-outline"></span> Other</span>
-<span class="font-bold">10%</span>
-</div>
-</div>
-</div>
-<!-- Stacked Bar Chart (Creator Performance Top 15 - Preview) (7 cols) -->
-<div class="lg:col-span-7 bg-surface-container-low rounded-2xl p-6">
-<h3 class="font-headline font-bold text-xl mb-6">Revenue Split by Creator</h3>
-<div class="space-y-4">
-<!-- Bar Item -->
-<div class="flex items-center gap-4">
-<span class="w-24 text-[10px] font-bold uppercase text-on-surface-variant truncate">Alex R.</span>
-<div class="flex-1 h-6 flex rounded-lg overflow-hidden">
-<div class="bg-primary h-full w-[65%]" title="TaP GMV"></div>
-<div class="bg-secondary h-full w-[35%]" title="Live GMV"></div>
-</div>
-<span class="w-16 text-right text-xs font-bold">$620K</span>
-</div>
-<!-- Bar Item -->
-<div class="flex items-center gap-4">
-<span class="w-24 text-[10px] font-bold uppercase text-on-surface-variant truncate">Jordan S.</span>
-<div class="flex-1 h-6 flex rounded-lg overflow-hidden">
-<div class="bg-primary h-full w-[40%]" title="TaP GMV"></div>
-<div class="bg-secondary h-full w-[60%]" title="Live GMV"></div>
-</div>
-<span class="w-16 text-right text-xs font-bold">$585K</span>
-</div>
-<!-- Bar Item -->
-<div class="flex items-center gap-4">
-<span class="w-24 text-[10px] font-bold uppercase text-on-surface-variant truncate">Mila K.</span>
-<div class="flex-1 h-6 flex rounded-lg overflow-hidden">
-<div class="bg-primary h-full w-[75%]" title="TaP GMV"></div>
-<div class="bg-secondary h-full w-[25%]" title="Live GMV"></div>
-</div>
-<span class="w-16 text-right text-xs font-bold">$380K</span>
-</div>
-<!-- Bar Item -->
-<div class="flex items-center gap-4 opacity-60">
-<span class="w-24 text-[10px] font-bold uppercase text-on-surface-variant truncate">TechU.</span>
-<div class="flex-1 h-6 flex rounded-lg overflow-hidden">
-<div class="bg-primary h-full w-[90%]" title="TaP GMV"></div>
-<div class="bg-secondary h-full w-[10%]" title="Live GMV"></div>
-</div>
-<span class="w-16 text-right text-xs font-bold">$225K</span>
-</div>
-<!-- Bar Item -->
-<div class="flex items-center gap-4 opacity-40">
-<span class="w-24 text-[10px] font-bold uppercase text-on-surface-variant truncate">Luna Glo</span>
-<div class="flex-1 h-6 flex rounded-lg overflow-hidden">
-<div class="bg-primary h-full w-[55%]" title="TaP GMV"></div>
-<div class="bg-secondary h-full w-[45%]" title="Live GMV"></div>
-</div>
-<span class="w-16 text-right text-xs font-bold">$190K</span>
-</div>
-</div>
-<div class="mt-6 flex gap-4">
-<div class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">
-<div class="w-3 h-3 rounded-sm bg-primary"></div> TaP GMV
                     </div>
-<div class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">
-<div class="w-3 h-3 rounded-sm bg-secondary"></div> Live GMV
+                    <div class="text-right">
+                        <p class="text-sm font-extrabold text-[#E91E63]">$422k</p>
+                        <p class="text-[10px] text-green-600 font-bold">+15%</p>
                     </div>
-</div>
-</div>
-<!-- Manager Performance (5 cols) -->
-<div class="lg:col-span-5 bg-surface-container-low rounded-2xl p-6">
-<h3 class="font-headline font-bold text-xl mb-6">Manager Alpha</h3>
-<div class="space-y-8">
-<div>
-<div class="flex justify-between items-end mb-2">
-<span class="font-headline font-bold text-lg">NICOLE</span>
-<span class="text-primary font-black text-xl">$1.2M</span>
-</div>
-<div class="h-3 w-full bg-surface-container-highest rounded-full">
-<div class="h-full bg-primary rounded-full" style="width: 85%"></div>
-</div>
-<div class="flex justify-between mt-1">
-<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">14 Creators Managed</span>
-<span class="text-[10px] font-bold text-primary uppercase tracking-widest">+12% Target</span>
-</div>
-</div>
-<div>
-<div class="flex justify-between items-end mb-2">
-<span class="font-headline font-bold text-lg">CARA</span>
-<span class="text-secondary font-black text-xl">$890K</span>
-</div>
-<div class="h-3 w-full bg-surface-container-highest rounded-full">
-<div class="h-full bg-secondary rounded-full" style="width: 62%"></div>
-</div>
-<div class="flex justify-between mt-1">
-<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">9 Creators Managed</span>
-<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">At Target</span>
-</div>
-</div>
-<div>
-<div class="flex justify-between items-end mb-2">
-<span class="font-headline font-bold text-lg">EMILEE</span>
-<span class="text-on-surface-variant font-black text-xl">$410K</span>
-</div>
-<div class="h-3 w-full bg-surface-container-highest rounded-full">
-<div class="h-full bg-on-surface-variant rounded-full" style="width: 28%"></div>
-</div>
-<div class="flex justify-between mt-1">
-<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">5 Creators Managed</span>
-<span class="text-[10px] font-bold text-error uppercase tracking-widest">-5% Target</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Product Catalog Panel (Full Width) -->
-<div class="lg:col-span-12 grid grid-cols-1 md:grid-cols-4 gap-6">
-<div class="md:col-span-1">
-<h3 class="font-headline font-bold text-3xl tracking-tighter leading-none mb-4">PRODUCT<br/><span class="text-primary">ELITE</span></h3>
-<p class="text-on-surface-variant text-sm font-body">Highest converting SKUs across the creator network for Q1.</p>
-</div>
-<div class="md:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-4">
-<!-- Product Card -->
-<div class="bg-surface-container-high rounded-xl p-4 group hover:bg-surface-container-highest transition-all">
-<div class="aspect-square w-full rounded-lg mb-4 bg-surface-container-low overflow-hidden">
-<img alt="Smart Watch" class="w-full h-full object-cover" data-alt="Minimalist top-down shot of a sleek black smartwatch on a textured concrete surface with sharp shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmUg0vNm6P1U04GgZjhQvhjShlQXVGnocdFJUnUjIO3Q4xCkOyhz2wzzrHkZ2Kcw1FbYoDsbpklWXsJroB8NbS-Guq51COPPCyfEn1Fs7EDXbn1mbz-aU6EpesMREGzIzKZwgFoMupOnSteTGKjwZu-bnpe8qVV8bgK0-yMDtQImD_0Ta-QYPutxICz1zl2-psO4YrxRzt4zmHur-XXhDr7hX2P9uoq8EJlMg2-61WYhH0v29SbzRJOZhLJG6r5TtLzV8TtlBi9sc"/>
-</div>
-<h4 class="font-bold text-sm mb-1 truncate">Neo-Tech Series 5</h4>
-<div class="flex justify-between items-center">
-<span class="text-on-surface-variant text-xs">4.2k Sold</span>
-<span class="px-2 py-0.5 bg-primary/20 text-primary text-[10px] font-black rounded">20% COMM</span>
-</div>
-</div>
-<!-- Product Card -->
-<div class="bg-surface-container-high rounded-xl p-4 group hover:bg-surface-container-highest transition-all">
-<div class="aspect-square w-full rounded-lg mb-4 bg-surface-container-low overflow-hidden">
-<img alt="Beauty Serum" class="w-full h-full object-cover" data-alt="Premium cosmetic bottle with rose gold cap reflecting soft studio lighting on a silk fabric background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAa8gXqdqmX8nb1pVREpNx7FdLmbHXP-Mq-c8xGjzbJxYunWNQ3n-J6pCMz52T-SXKlKnHDmWuHINR_D1h8l-scX7v6J3lmex1D0hjOeuLs667dbo4kOPGEGEivVupGhIDB4fr8L14GtaMSN7Bbv1cFPzycuafLuq3KsuMR-Q5O9mompdsRpDKgJxauCjPgoLq7PyXNQgbOoLBCqbFWJyrfK6APALrIn80_DMdPQXpkh04NPd8xKDDQNF_PYwlCs4TVxcjYhm4ldow"/>
-</div>
-<h4 class="font-bold text-sm mb-1 truncate">Glow-Boost Serum</h4>
-<div class="flex justify-between items-center">
-<span class="text-on-surface-variant text-xs">3.8k Sold</span>
-<span class="px-2 py-0.5 bg-primary/20 text-primary text-[10px] font-black rounded">15% COMM</span>
-</div>
-</div>
-<!-- Product Card -->
-<div class="bg-surface-container-high rounded-xl p-4 group hover:bg-surface-container-highest transition-all">
-<div class="aspect-square w-full rounded-lg mb-4 bg-surface-container-low overflow-hidden">
-<img alt="Headphones" class="w-full h-full object-cover" data-alt="Matte black wireless headphones floating in a dark cinematic space with neon teal highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsLh4L5XYeZ7EriSvzP2P_dh4qRNUGu1EMAPLWWfHUbJWIvnXO39QFIDxhlfFyJTvGx9DKr59VAQioOBj79rd50ZNKF4GUPdJnZauR3rKcZi2h1gTR-qW1zdN33nlFxAXQuJfrRFgA8Zgnicl2m92E2R_lDdAu-WgyhB_KZRPF5dw2U9SM1T9m8wBBSfcNmrJImviFqLV2aV6TSA6QIMtQGIeW6y8LEUZSrp2lIHKWkRePvfQAf9dDWrw_qTg2lAKV7JPAaXqoGH0"/>
-</div>
-<h4 class="font-bold text-sm mb-1 truncate">Bass-Line Pro V2</h4>
-<div class="flex justify-between items-center">
-<span class="text-on-surface-variant text-xs">2.9k Sold</span>
-<span class="px-2 py-0.5 bg-primary/20 text-primary text-[10px] font-black rounded">12% COMM</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</main>
-<!-- BottomNavBar (Mobile Only) -->
-<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#1c1b1b]/80 backdrop-blur-xl shadow-[0_-8px_40px_rgba(0,0,0,0.5)] rounded-t-3xl">
-<a class="flex flex-col items-center justify-center text-[#c4c6cc] opacity-60 hover:opacity-100 hover:text-[#ffb2b7] transition-all" href="index.html">
-<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
-<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Home</span>
-</a>
-<a class="flex flex-col items-center justify-center text-[#00ddd6] bg-[#00ddd6]/10 rounded-xl px-3 py-1 transition-all active:scale-90 duration-150" href="shop.html">
-<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
-<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Shop</span>
-</a>
-<a class="flex flex-col items-center justify-center text-[#c4c6cc] opacity-60 hover:opacity-100 hover:text-[#ffb2b7] transition-all" href="live.html">
-<span class="material-symbols-outlined" data-icon="sensors">sensors</span>
-<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Live</span>
-</a>
-<a class="flex flex-col items-center justify-center text-[#c4c6cc] opacity-60 hover:opacity-100 hover:text-[#ffb2b7] transition-all" href="creator.html">
-<span class="material-symbols-outlined" data-icon="group">group</span>
-<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Creator</span>
-</a>
-<a class="flex flex-col items-center justify-center text-[#c4c6cc] opacity-60 hover:opacity-100 hover:text-[#ffb2b7] transition-all" href="ai.html">
-<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
-<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">AI</span>
-</a>
-</nav>
-</body></html>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-white border border-gray-100 rounded-xl">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold text-xs">SL</div>
+                        <div>
+                            <p class="text-sm font-bold text-gray-900">Sophia Lee</p>
+                            <p class="text-[10px] text-gray-500 font-bold uppercase">Fashion</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-sm font-extrabold text-[#E91E63]">$385k</p>
+                        <p class="text-[10px] text-green-600 font-bold">+8.2%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 px-6 py-3 flex justify-between items-center z-50">
+        <a href="index.html" class="flex flex-col items-center text-gray-400">
+            <span class="material-symbols-outlined">home</span>
+            <span class="text-[8px] font-bold uppercase mt-1 tracking-tighter">Home</span>
+        </a>
+        <a href="shop.html" class="flex flex-col items-center text-[#E91E63]">
+            <span class="material-symbols-outlined">shopping_bag</span>
+            <span class="text-[8px] font-bold uppercase mt-1 tracking-tighter">Shop</span>
+        </a>
+        <a href="live.html" class="flex flex-col items-center text-gray-400">
+            <span class="material-symbols-outlined">live_tv</span>
+            <span class="text-[8px] font-bold uppercase mt-1 tracking-tighter">Live</span>
+        </a>
+        <a href="creator.html" class="flex flex-col items-center text-gray-400">
+            <span class="material-symbols-outlined">person</span>
+            <span class="text-[8px] font-bold uppercase mt-1 tracking-tighter">Creator</span>
+        </a>
+        <a href="ai.html" class="flex flex-col items-center text-gray-400">
+            <span class="material-symbols-outlined">smart_toy</span>
+            <span class="text-[8px] font-bold uppercase mt-1 tracking-tighter">AI</span>
+        </a>
+    </nav>
+    <script>
+        // Update GMV from localStorage if available
+        const savedGmv = localStorage.getItem('totalGmv');
+        if (savedGmv) document.querySelector('.line-gmv').innerText = savedGmv;
+    </script>
+</body>
+</html>

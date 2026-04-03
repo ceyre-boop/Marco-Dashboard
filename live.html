@@ -1,384 +1,122 @@
 <!DOCTYPE html>
-
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Marco’s Data — TikTok LIVE Analytics</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              "tertiary-container": "#000c0d",
-              "surface-bright": "#393939",
-              "surface": "#131313",
-              "on-primary-container": "#008883",
-              "on-secondary-fixed-variant": "#92002a",
-              "on-surface-variant": "#c4c6cc",
-              "inverse-primary": "#006a66",
-              "secondary": "#ffb2b7",
-              "surface-container-highest": "#353534",
-              "secondary-fixed-dim": "#ffb2b7",
-              "on-error": "#690005",
-              "error-container": "#93000a",
-              "secondary-fixed": "#ffdadb",
-              "secondary-container": "#ff516a",
-              "tertiary-fixed-dim": "#76d5dc",
-              "inverse-on-surface": "#313030",
-              "surface-container-lowest": "#0e0e0e",
-              "surface-tint": "#00ddd6",
-              "on-tertiary-container": "#11868d",
-              "on-tertiary": "#00373a",
-              "surface-dim": "#131313",
-              "inverse-surface": "#e5e2e1",
-              "primary": "#00ddd6",
-              "on-secondary": "#67001b",
-              "on-primary": "#003735",
-              "on-background": "#e5e2e1",
-              "surface-container-high": "#2a2a2a",
-              "tertiary": "#76d5dc",
-              "on-surface": "#e5e2e1",
-              "surface-container": "#201f1f",
-              "on-secondary-fixed": "#40000d",
-              "on-tertiary-fixed-variant": "#004f53",
-              "surface-variant": "#353534",
-              "background": "#131313",
-              "on-secondary-container": "#5b0017",
-              "on-primary-fixed": "#00201e",
-              "tertiary-fixed": "#93f2f9",
-              "surface-container-low": "#1c1b1b",
-              "on-error-container": "#ffdad6",
-              "on-primary-fixed-variant": "#00504d",
-              "error": "#ffb4ab",
-              "primary-container": "#000d0c",
-              "primary-fixed": "#29fcf3",
-              "outline-variant": "#44474c",
-              "on-tertiary-fixed": "#002022",
-              "outline": "#8e9196",
-              "primary-fixed-dim": "#00ddd6"
-            },
-            fontFamily: {
-              "headline": ["Manrope"],
-              "body": ["Inter"],
-              "label": ["Inter"]
-            },
-            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
-          },
-        },
-      }
-    </script>
-<style>
-      .material-symbols-outlined {
-        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-      }
-      .glass-card {
-        background: rgba(42, 42, 42, 0.4);
-        backdrop-filter: blur(24px);
-        -webkit-backdrop-filter: blur(24px);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-      }
-      .no-scrollbar::-webkit-scrollbar { display: none; }
-      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIVE Performance - TABOOST</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; }
+        .glass-card { background: white; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-radius: 12px; }
     </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-  </head>
-<body class="bg-background text-on-surface font-body selection:bg-primary/30 min-h-screen pb-32">
-<!-- TopAppBar -->
-<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-[#131313]">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant/20">
-<img alt="CEO Profile" data-alt="high-end professional headshot of an executive in a dark modern studio setting with blue rim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlLSvez_JH1i3TGznGSKj16smf01dgrYhLwAv_Si5RkPyriymGDd_dWzMpdjcC9NtoKsALoyLlxh4XZs_wq2oXTU1XQmHzMfkTGZHQzr6LKOcxHEeTnzGat0d2-3TGtoCPxWrd-OLoICYXa3O4RyRQRvXHvOm-kS52a51poG0AXB34wxDj8HodOS0YejgUJeywKvmiBnwI0SGyNTpNgIHbe4p-WyFTzzpWGzlcq3nCAXe58_yc2XKeIqlGJyTAg8PC2zROkHX2Wmk"/>
-</div>
-<h1 class="text-2xl font-black tracking-tighter text-[#00ddd6] uppercase font-headline">MARCO’S DATA</h1>
-</div>
-<div class="flex items-center gap-6">
-<nav class="hidden md:flex gap-8">
-<a class="font-headline font-bold tracking-tight text-[#c4c6cc] hover:bg-[#2a2a2a] transition-colors px-3 py-1 rounded-xl" href="index.html">Home</a>
-<a class="font-headline font-bold tracking-tight text-[#c4c6cc] hover:bg-[#2a2a2a] transition-colors px-3 py-1 rounded-xl" href="shop.html">Shop</a>
-<a class="font-headline font-bold tracking-tight text-[#00ddd6] hover:bg-[#2a2a2a] transition-colors px-3 py-1 rounded-xl" href="live.html">Live</a>
-<a class="font-headline font-bold tracking-tight text-[#c4c6cc] hover:bg-[#2a2a2a] transition-colors px-3 py-1 rounded-xl" href="creator.html">Creator</a>
-<a class="font-headline font-bold tracking-tight text-[#c4c6cc] hover:bg-[#2a2a2a] transition-colors px-3 py-1 rounded-xl" href="ai.html">AI</a>
-</nav>
-<span class="material-symbols-outlined text-[#00ddd6] cursor-pointer">calendar_today</span>
-</div>
-</header>
-<main class="pt-24 px-6 max-w-7xl mx-auto space-y-10">
-<!-- Hero Metric & Regional Comparison -->
-<section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-<div class="lg:col-span-4 flex flex-col justify-end">
-<p class="font-label text-sm uppercase tracking-[0.2em] text-on-surface-variant mb-2">Global Live Volume</p>
-<h2 class="font-headline text-7xl lg:text-8xl font-extrabold tracking-tighter text-primary">4.2M</h2>
-<div class="flex items-center gap-2 mt-4">
-<span class="text-primary material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">trending_up</span>
-<p class="font-label text-sm text-primary">+12.4% vs last week</p>
-</div>
-</div>
-<div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-<!-- US Card -->
-<div class="glass-card p-6 rounded-xl border-l-4 border-primary">
-<div class="flex justify-between items-start mb-6">
-<div>
-<p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">North America</p>
-<h3 class="font-headline text-2xl font-bold">UNITED STATES</h3>
-</div>
-<span class="material-symbols-outlined text-primary/40 text-4xl">public</span>
-</div>
-<div class="space-y-4">
-<div class="flex justify-between items-end">
-<span class="text-3xl font-bold font-headline">2.8M <span class="text-sm font-normal text-on-surface-variant">Diamonds</span></span>
-<span class="text-xs text-primary font-medium">842 Streams</span>
-</div>
-<div class="h-1 bg-surface-container-highest rounded-full overflow-hidden">
-<div class="h-full bg-primary w-[70%]"></div>
-</div>
-</div>
-</div>
-<!-- UK Card -->
-<div class="glass-card p-6 rounded-xl border-l-4 border-secondary">
-<div class="flex justify-between items-start mb-6">
-<div>
-<p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Europe</p>
-<h3 class="font-headline text-2xl font-bold">UNITED KINGDOM</h3>
-</div>
-<span class="material-symbols-outlined text-secondary/40 text-4xl">flag</span>
-</div>
-<div class="space-y-4">
-<div class="flex justify-between items-end">
-<span class="text-3xl font-bold font-headline">1.4M <span class="text-sm font-normal text-on-surface-variant">Diamonds</span></span>
-<span class="text-xs text-secondary font-medium">315 Streams</span>
-</div>
-<div class="h-1 bg-surface-container-highest rounded-full overflow-hidden">
-<div class="h-full bg-secondary w-[45%]"></div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Diamond Leaderboard & Efficiency Scatter -->
-<section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-<!-- Leaderboard -->
-<div class="lg:col-span-1 bg-surface-container-low p-6 rounded-xl space-y-6">
-<div class="flex justify-between items-center">
-<h4 class="font-headline text-xl font-bold">Diamond Elite</h4>
-<span class="font-label text-[10px] uppercase tracking-widest bg-primary/10 text-primary px-2 py-1 rounded">Top 100</span>
-</div>
-<div class="space-y-4">
-<!-- Row 1 -->
-<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-high/40 border border-outline-variant/10">
-<div class="flex items-center gap-3">
-<span class="text-sm font-bold text-on-surface-variant">01</span>
-<div class="w-10 h-10 rounded-full border-2 border-primary p-0.5">
-<img alt="Creator 1" class="rounded-full" data-alt="professional TikTok creator avatar with vibrant neon background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB791XIGffxA0snWLjwG99sV44yk2fm2ijtHVzH0ZiqHRjMljOM7_42RLsUx1Y6i5RG-a6UZY0QrDCGA-BxamC0_FYq8TdHKLmGRrxphz25Fn2JBII2tLvdp2_AbNvVE7dHqsjE2hpcbsZ5qoVMnJw7SusHtUMqOFYJOdnq0FGLzzKkpFHVz91HLgQe01FPg0ptn50FOJKVEnBc49t9hTw4xnXu6Qeb9r52Sc8bVTunA7mUznfU1bYIGV_4DNxhNDA5XI35kZ5zc8g"/>
-</div>
-<div>
-<p class="text-sm font-bold">Skyler.LIVE</p>
-<div class="flex items-center gap-1">
-<span class="text-[9px] uppercase font-black text-primary">Mythic III</span>
-</div>
-</div>
-</div>
-<div class="text-right">
-<p class="text-sm font-mono font-bold">412K</p>
-<span class="material-symbols-outlined text-primary text-xs" style="font-variation-settings: 'FILL' 1;">arrow_drop_up</span>
-</div>
-</div>
-<!-- Row 2 -->
-<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-high/40">
-<div class="flex items-center gap-3">
-<span class="text-sm font-bold text-on-surface-variant">02</span>
-<div class="w-10 h-10 rounded-full border-2 border-secondary p-0.5">
-<img alt="Creator 2" class="rounded-full" data-alt="digital avatar of a trendy influencer with studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjVOxdYc8VyqOEGAPC7OkZexAYTtVrDBXFprHLHsQOKb2Zb345je1XtN--fL0iOqCVr-sLh9ooRmK8ycxsCgU7t4kY71WUcwZjd6l8ONM_MRikXMQ97e-BzSkPmVdYB_m55RFIKY2NYZRqiwlsEyFj40d2_W1TAFhLrgAPbYrnCOy4pfaVjgtTpQ1B2IHxQh7hRyoqmszq_kHVrLBWn01COt_-tPJwwpIzM_5P9QTZ-mIG4SN-l7Fu8356Uw4__-blbvihZ7nPIOQ"/>
-</div>
-<div>
-<p class="text-sm font-bold">LeoVibes</p>
-<div class="flex items-center gap-1">
-<span class="text-[9px] uppercase font-black text-secondary">Legend I</span>
-</div>
-</div>
-</div>
-<div class="text-right">
-<p class="text-sm font-mono font-bold">389K</p>
-<span class="material-symbols-outlined text-error text-xs" style="font-variation-settings: 'FILL' 1;">arrow_drop_down</span>
-</div>
-</div>
-<!-- Row 3 -->
-<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-high/40">
-<div class="flex items-center gap-3">
-<span class="text-sm font-bold text-on-surface-variant">03</span>
-<div class="w-10 h-10 rounded-full border-2 border-outline-variant p-0.5">
-<img alt="Creator 3" class="rounded-full" data-alt="artistic avatar of a female creator with colorful accessories" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDv74raMKcwXA-NgX_e0ICcUerbeRZtCfVvullAsvUj1QGCc9YSukX5SWQ0itabE-DUjOwImROB2SOywLsXeJ11X-CfkH5fNB0j04DDLNLq9vzjo4oMSzuYgqZYDKmdj-58RHh9sLMuL3aDsd7o5Y1ltZCxNtoDQPg1-rePoJ1qqVb8ZSrNm9Ba2xADQBFGE1wQ4XdutEaX_mW86H3YtBq-xiYBueTNgfB-fXvMynyR1k2NE3IfqbQ6qdLhGv1kGYMXd6faYaCgKl4"/>
-</div>
-<div>
-<p class="text-sm font-bold">Mila_Official</p>
-<div class="flex items-center gap-1">
-<span class="text-[9px] uppercase font-black text-on-surface-variant">Diamond V</span>
-</div>
-</div>
-</div>
-<div class="text-right">
-<p class="text-sm font-mono font-bold">312K</p>
-<span class="material-symbols-outlined text-primary text-xs" style="font-variation-settings: 'FILL' 1;">arrow_drop_up</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Scatter Plot Efficiency -->
-<div class="lg:col-span-2 bg-surface-container-low p-6 rounded-xl relative overflow-hidden">
-<div class="flex justify-between items-center mb-10">
-<div>
-<h4 class="font-headline text-xl font-bold uppercase tracking-tight">Streamer Efficiency</h4>
-<p class="text-xs text-on-surface-variant">Hours Streamed vs. Diamonds Earned</p>
-</div>
-<div class="flex gap-2">
-<div class="flex items-center gap-1">
-<span class="w-2 h-2 rounded-full bg-primary"></span>
-<span class="text-[10px] text-on-surface-variant uppercase">US</span>
-</div>
-<div class="flex items-center gap-1">
-<span class="w-2 h-2 rounded-full bg-secondary"></span>
-<span class="text-[10px] text-on-surface-variant uppercase">UK</span>
-</div>
-</div>
-</div>
-<div class="h-64 relative border-l border-b border-outline-variant/30 flex items-end">
-<!-- Simplified Scatter Visuals -->
-<div class="absolute bottom-[20%] left-[15%] w-3 h-3 bg-primary rounded-full blur-[2px] opacity-80"></div>
-<div class="absolute bottom-[40%] left-[30%] w-4 h-4 bg-primary rounded-full blur-[2px] opacity-80 shadow-[0_0_10px_rgba(0,221,214,0.5)]"></div>
-<div class="absolute bottom-[60%] left-[45%] w-3 h-3 bg-secondary rounded-full blur-[2px] opacity-80"></div>
-<div class="absolute bottom-[30%] left-[60%] w-5 h-5 bg-primary rounded-full blur-[2px] opacity-80 shadow-[0_0_15px_rgba(0,221,214,0.4)]"></div>
-<div class="absolute bottom-[80%] left-[75%] w-4 h-4 bg-secondary rounded-full blur-[2px] opacity-80 shadow-[0_0_12px_rgba(255,178,183,0.5)]"></div>
-<div class="absolute bottom-[55%] left-[85%] w-3 h-3 bg-primary rounded-full blur-[2px] opacity-80"></div>
-<!-- Axis Labels -->
-<div class="absolute -left-10 top-1/2 -rotate-90 text-[10px] tracking-widest text-on-surface-variant uppercase">Earnings</div>
-<div class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] tracking-widest text-on-surface-variant uppercase">Hours</div>
-<!-- Grid Lines -->
-<div class="w-full h-full grid grid-cols-4 grid-rows-4 opacity-5">
-<div class="border-r border-t border-on-surface"></div>
-<div class="border-r border-t border-on-surface"></div>
-<div class="border-r border-t border-on-surface"></div>
-<div class="border-r border-t border-on-surface"></div>
-<div class="border-r border-t border-on-surface"></div>
-<div class="border-r border-t border-on-surface"></div>
-<div class="border-r border-t border-on-surface"></div>
-<div class="border-r border-t border-on-surface"></div>
-</div>
-</div>
-</div>
-</section>
-<!-- Management Breakdown & Tier Progression -->
-<section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-<!-- Manager Breakdown -->
-<div class="lg:col-span-5 bg-surface-container-low p-6 rounded-xl flex flex-col justify-between">
-<h4 class="font-headline text-lg font-bold mb-6">Manager Performance</h4>
-<div class="space-y-6">
-<!-- Carrington -->
-<div class="group">
-<div class="flex justify-between items-center mb-2">
-<span class="font-headline font-bold text-sm">CARRINGTON</span>
-<span class="text-primary text-xs font-mono">1.2M Di.</span>
-</div>
-<div class="h-2 bg-surface-container-highest rounded-full flex overflow-hidden">
-<div class="h-full bg-primary w-[85%]"></div>
-</div>
-</div>
-<!-- Eliza -->
-<div class="group">
-<div class="flex justify-between items-center mb-2">
-<span class="font-headline font-bold text-sm">Eliza</span>
-<span class="text-secondary text-xs font-mono">840K Di.</span>
-</div>
-<div class="h-2 bg-surface-container-highest rounded-full flex overflow-hidden">
-<div class="h-full bg-secondary w-[60%]"></div>
-</div>
-</div>
-<!-- Ruta -->
-<div class="group">
-<div class="flex justify-between items-center mb-2">
-<span class="font-headline font-bold text-sm">Ruta</span>
-<span class="text-tertiary text-xs font-mono">420K Di.</span>
-</div>
-<div class="h-2 bg-surface-container-highest rounded-full flex overflow-hidden">
-<div class="h-full bg-tertiary w-[30%]"></div>
-</div>
-</div>
-</div>
-<button class="mt-8 py-3 bg-gradient-to-r from-primary to-on-primary-container text-on-primary font-bold rounded-xl text-sm uppercase tracking-widest hover:scale-105 transition-transform">
-                    Assign New Creator
-                </button>
-</div>
-<!-- Rewards Event Log -->
-<div class="lg:col-span-7 bg-surface-container-low p-6 rounded-xl">
-<h4 class="font-headline text-lg font-bold mb-6">Active Reward Events</h4>
-<div class="space-y-3">
-<div class="flex items-center gap-4 p-4 rounded-xl bg-surface-container-lowest/50 border border-outline-variant/10">
-<div class="w-12 h-12 flex items-center justify-center rounded-xl bg-primary/20 text-primary">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
-</div>
-<div class="flex-grow">
-<p class="font-bold text-sm">Rank Boost</p>
-<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Ends in 02:44:12</p>
-</div>
-<div class="px-3 py-1 bg-primary/10 rounded-full">
-<span class="text-[10px] font-black text-primary">2X XP</span>
-</div>
-</div>
-<div class="flex items-center gap-4 p-4 rounded-xl bg-surface-container-lowest/50 border border-outline-variant/10">
-<div class="w-12 h-12 flex items-center justify-center rounded-xl bg-secondary/20 text-secondary">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">swords</span>
-</div>
-<div class="flex-grow">
-<p class="font-bold text-sm">Royal Rumble</p>
-<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Main Stage Live</p>
-</div>
-<div class="px-3 py-1 bg-secondary/10 rounded-full">
-<span class="text-[10px] font-black text-secondary">PK BATTLE</span>
-</div>
-</div>
-<div class="flex items-center gap-4 p-4 rounded-xl bg-surface-container-lowest/50 border border-outline-variant/10 opacity-60">
-<div class="w-12 h-12 flex items-center justify-center rounded-xl bg-on-surface-variant/20 text-on-surface-variant">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">music_note</span>
-</div>
-<div class="flex-grow">
-<p class="font-bold text-sm">Music Cypher</p>
-<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Starts Tomorrow</p>
-</div>
-<span class="material-symbols-outlined text-sm">lock</span>
-</div>
-</div>
-</div>
-</section>
-</main>
-<!-- BottomNavBar -->
-<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#1c1b1b]/80 backdrop-blur-xl md:hidden shadow-[0_-8px_40px_rgba(0,0,0,0.5)] rounded-t-3xl">
-<a class="flex flex-col items-center justify-center text-[#c4c6cc] opacity-60 hover:opacity-100 hover:text-[#ffb2b7] transition-colors cursor-pointer" href="index.html">
-<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
-<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Home</span>
-</a>
-<a class="flex flex-col items-center justify-center text-[#c4c6cc] opacity-60 hover:opacity-100 hover:text-[#ffb2b7] transition-colors cursor-pointer" href="shop.html">
-<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
-<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Shop</span>
-</a>
-<a class="flex flex-col items-center justify-center text-[#00ddd6] bg-[#00ddd6]/10 rounded-xl px-3 py-1 scale-90 duration-150 cursor-pointer" href="live.html">
-<span class="material-symbols-outlined" data-icon="sensors" style="font-variation-settings: 'FILL' 1;">sensors</span>
-<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Live</span>
-</a>
-<a class="flex flex-col items-center justify-center text-[#c4c6cc] opacity-60 hover:opacity-100 hover:text-[#ffb2b7] transition-colors cursor-pointer" href="creator.html">
-<span class="material-symbols-outlined" data-icon="group">group</span>
-<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Creator</span>
-</a>
-<a class="flex flex-col items-center justify-center text-[#c4c6cc] opacity-60 hover:opacity-100 hover:text-[#ffb2b7] transition-colors cursor-pointer" href="ai.html">
-<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
-<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">AI</span>
-</a>
-</nav>
-</body></html>
+</head>
+<body class="pb-24">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-100 px-6 py-4 flex justify-between items-center sticky top-0 z-50">
+        <button class="material-symbols-outlined text-gray-600">menu</button>
+        <span class="font-black text-2xl tracking-tighter text-[#E91E63]">TABOOST</span>
+        <div class="flex items-center gap-3">
+            <div class="text-right hidden sm:block">
+                <p class="text-sm font-bold text-gray-900">Marco</p>
+                <p class="text-[10px] text-gray-500 font-bold uppercase">CEO</p>
+            </div>
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcMQzgLo6UP_Z-FIHPA0gYtl3bOaHRJu8Cf0L6dSOfPs7fp9mwZiExtKcPMXsSmXJRdBEcCO02cjhMrLFrnf2qA8uc_OKv7yIG8_2YlfZeuUPjpCT3hW96yeca5bWavMdUcKXQQxM5eHk0B4AtyMHYRZ_TdzJmEWnj_yjJZkuL7kHqAOERm4wtU1Pscw48ud20VD-R8vxRxCc-f8qJwjcp2eDF8ILoFA25F59jAZkJaKGdBV1BxzlihtU2QgM_R762HOtvw53Mifo" class="w-10 h-10 rounded-full border border-gray-100" alt="Marco Profile">
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 pt-8">
+        <h1 class="text-2xl font-extrabold text-gray-900 mb-6 px-2">LIVE Analytics</h1>
+
+        <!-- Metrics Grid -->
+        <div class="grid grid-cols-2 gap-4 px-2 mb-8">
+            <div class="glass-card p-4">
+                <p class="text-[11px] font-bold text-gray-500 uppercase tracking-wider">LIVE Revenue MTD</p>
+                <p class="text-2xl font-extrabold text-[#E91E63] mt-1">$154k</p>
+                <p class="text-[10px] text-red-600 font-bold mt-1">↓ 4.2% vs LW</p>
+            </div>
+            <div class="glass-card p-4">
+                <p class="text-[11px] font-bold text-gray-500 uppercase tracking-wider">Concurrent Viewers</p>
+                <p class="text-2xl font-extrabold text-gray-900 mt-1">12.4k</p>
+                <p class="text-[10px] text-green-600 font-bold mt-1">↑ Peak Spike</p>
+            </div>
+        </div>
+
+        <!-- Manager Performance -->
+        <div class="glass-card mx-2 p-6 mb-8">
+            <h3 class="font-extrabold text-gray-900 mb-4">Manager Performance</h3>
+            <div class="space-y-6">
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-bold text-gray-700 uppercase">Carrington</span>
+                        <span class="text-xs font-bold text-[#E91E63]">1.2M 💎</span>
+                    </div>
+                    <div class="w-full bg-gray-100 rounded-full h-2">
+                        <div class="bg-[#E91E63] h-2 rounded-full" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-bold text-gray-700 uppercase">Eliza</span>
+                        <span class="text-xs font-bold text-[#E91E63]">840k 💎</span>
+                    </div>
+                    <div class="w-full bg-gray-100 rounded-full h-2">
+                        <div class="bg-[#E91E63] h-2 rounded-full opacity-60" style="width: 60%"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-bold text-gray-700 uppercase">Ruta</span>
+                        <span class="text-xs font-bold text-[#E91E63]">420k 💎</span>
+                    </div>
+                    <div class="w-full bg-gray-100 rounded-full h-2">
+                        <div class="bg-[#E91E63] h-2 rounded-full opacity-30" style="width: 30%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reward Events -->
+        <div class="glass-card mx-2 p-6">
+            <h3 class="font-extrabold text-gray-900 mb-4">Active Reward Events</h3>
+            <div class="space-y-3">
+                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-[#E91E63]">rocket_launch</span>
+                        <div>
+                            <p class="text-sm font-bold text-gray-900">Rank Boost</p>
+                            <p class="text-[10px] text-gray-500 font-bold uppercase">Ends in 02:44:12</p>
+                        </div>
+                    </div>
+                    <span class="px-2 py-0.5 bg-pink-100 text-[#E91E63] text-[10px] font-black rounded uppercase">2X XP</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 px-6 py-3 flex justify-between items-center z-50">
+        <a href="index.html" class="flex flex-col items-center text-gray-400">
+            <span class="material-symbols-outlined">home</span>
+            <span class="text-[8px] font-bold uppercase mt-1 tracking-tighter">Home</span>
+        </a>
+        <a href="shop.html" class="flex flex-col items-center text-gray-400">
+            <span class="material-symbols-outlined">shopping_bag</span>
+            <span class="text-[8px] font-bold uppercase mt-1 tracking-tighter">Shop</span>
+        </a>
+        <a href="live.html" class="flex flex-col items-center text-[#E91E63]">
+            <span class="material-symbols-outlined">live_tv</span>
+            <span class="text-[8px] font-bold uppercase mt-1 tracking-tighter">Live</span>
+        </a>
+        <a href="creator.html" class="flex flex-col items-center text-gray-400">
+            <span class="material-symbols-outlined">person</span>
+            <span class="text-[8px] font-bold uppercase mt-1 tracking-tighter">Creator</span>
+        </a>
+        <a href="ai.html" class="flex flex-col items-center text-gray-400">
+            <span class="material-symbols-outlined">smart_toy</span>
+            <span class="text-[8px] font-bold uppercase mt-1 tracking-tighter">AI</span>
+        </a>
+    </nav>
+</body>
+</html>
