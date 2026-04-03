@@ -9,7 +9,7 @@ const summaryData = {
     "gmv": "422k",
     "live": "0k"
   },
-  "lastUpdated": "4/2/2026, 8:58:53 PM"
+  "lastUpdated": "4/2/2026, 9:21:56 PM"
 };
 document.getElementById('total-gmv').innerText = summaryData.gmv;
 document.getElementById('total-live').innerText = summaryData.live;
