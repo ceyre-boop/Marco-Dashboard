@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creator Intelligence - TABOOST</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     <style>
@@ -27,45 +28,98 @@
     </header>
 
     <main class="max-w-4xl mx-auto px-4 pt-8">
-        <h1 class="text-2xl font-extrabold text-gray-900 mb-6 px-2">Creator Hub</h1>
+        <h1 class="text-2xl font-extrabold text-gray-900 mb-6 px-2">Creator Intelligence</h1>
 
-        <!-- Metrics Grid -->
-        <div class="grid grid-cols-2 gap-4 px-2 mb-8">
-            <div class="glass-card p-4">
-                <p class="text-[11px] font-bold text-gray-500 uppercase tracking-wider">Total Roster</p>
-                <p class="text-2xl font-extrabold text-[#E91E63] mt-1">588</p>
-                <p class="text-[10px] text-gray-500 font-bold mt-1">US: 320 | UK: 268</p>
+        <!-- Intelligent Alerts -->
+        <div class="mb-8 px-2 space-y-3">
+            <!-- Level Up Alerts -->
+            <div class="bg-green-50 border border-green-200 rounded-xl p-4 flex items-start gap-3">
+                <span class="material-symbols-outlined text-green-600 mt-0.5">verified</span>
+                <div>
+                    <h4 class="font-extrabold text-green-900 text-sm">Level-Up Queue</h4>
+                    <p class="text-xs text-green-700 mt-1 font-medium">3 creators are pacing ahead of their tier goals and qualify for the Elite tier upgrade this month: <strong class="font-bold">@sophialee_, @leovibes, @alleebaray</strong></p>
+                </div>
             </div>
-            <div class="glass-card p-4">
-                <p class="text-[11px] font-bold text-gray-500 uppercase tracking-wider">Health Index</p>
-                <p class="text-2xl font-extrabold text-gray-900 mt-1">92%</p>
-                <p class="text-[10px] text-green-600 font-bold mt-1">↑ 2.1% Growth</p>
+
+            <!-- At-Risk Alerts -->
+            <div class="bg-red-50 border border-red-200 rounded-xl p-4 flex items-start gap-3">
+                <span class="material-symbols-outlined text-red-600 mt-0.5">warning</span>
+                <div>
+                    <h4 class="font-extrabold text-red-900 text-sm">At-Risk Cohort</h4>
+                    <p class="text-xs text-red-700 mt-1 font-medium">5 creators have fallen behind their weekly streaming hour commitments. Automated check-in DMs have been queued in Discord.</p>
+                </div>
             </div>
         </div>
 
-        <!-- Trending Creators -->
-        <div class="glass-card mx-2 p-6">
-            <h3 class="font-extrabold text-gray-900 mb-4">A-List Performers</h3>
+        <!-- Creator Profile Cards Grid -->
+        <h3 class="font-extrabold text-gray-900 mb-4 px-2">Portfolio Snapshots</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-2 mb-8">
+            
+            <!-- Card 1 -->
+            <div class="glass-card p-5 hover:shadow-md transition-shadow cursor-pointer border-l-4 border-[#E91E63]">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-3">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" class="w-10 h-10 rounded-full object-cover shadow-sm">
+                        <div>
+                            <p class="text-sm font-extrabold text-gray-900">Allee Baray</p>
+                            <p class="text-[10px] font-bold text-[#E91E63]">@alleebaray</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="px-2 py-1 bg-gray-100 text-gray-600 text-[9px] font-black rounded uppercase">Level 8</span>
+                        <p class="text-xs font-bold text-gray-900 mt-1">Score: 94</p>
+                    </div>
+                </div>
+                <div class="h-12 w-full mt-2">
+                    <canvas id="sparkline1"></canvas>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="glass-card p-5 hover:shadow-md transition-shadow cursor-pointer border-l-4 border-indigo-500">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-3">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" class="w-10 h-10 rounded-full object-cover shadow-sm">
+                        <div>
+                            <p class="text-sm font-extrabold text-gray-900">Sophia Lee</p>
+                            <p class="text-[10px] font-bold text-indigo-500">@sophialee_</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="px-2 py-1 bg-indigo-100 text-indigo-700 text-[9px] font-black rounded uppercase">Level 7</span>
+                        <p class="text-xs font-bold text-gray-900 mt-1">Score: 88</p>
+                    </div>
+                </div>
+                <div class="h-12 w-full mt-2">
+                    <canvas id="sparkline2"></canvas>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- A-List Tracker -->
+        <div class="glass-card mx-2 p-6 mb-12">
+            <h3 class="font-extrabold text-gray-900 mb-4">A-List Tracker</h3>
             <div class="space-y-4">
                 <div class="flex items-center justify-between p-4 border border-gray-100 rounded-xl hover:bg-gray-50 transition-colors cursor-pointer">
                     <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold text-sm">AB</div>
+                        <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-[#E91E63] font-bold text-xs">AB</div>
                         <div>
-                            <p class="font-extrabold text-gray-900">Allee Baray</p>
-                            <p class="text-xs text-gray-500 font-medium">Shop Momentum Lead</p>
+                            <p class="font-extrabold text-gray-900 text-sm">Allee Baray</p>
+                            <p class="text-[10px] text-gray-500 font-bold uppercase">Shop & Live Hybrid</p>
                         </div>
                     </div>
-                    <span class="px-3 py-1 bg-green-100 text-green-700 text-[10px] font-black rounded-full uppercase">Elite</span>
+                    <span class="px-3 py-1 bg-[#E91E63] text-white text-[10px] font-black rounded-full uppercase shadow border border-pink-600">Elite A-List</span>
                 </div>
                 <div class="flex items-center justify-between p-4 border border-gray-100 rounded-xl hover:bg-gray-50 transition-colors cursor-pointer">
                     <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-sm">LV</div>
+                        <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold text-xs">SL</div>
                         <div>
-                            <p class="font-extrabold text-gray-900">LeoVibes</p>
-                            <p class="text-xs text-gray-500 font-medium">LIVE Volume Growth</p>
+                            <p class="font-extrabold text-gray-900 text-sm">Sophia Lee</p>
+                            <p class="text-[10px] text-gray-500 font-bold uppercase">Fashion Exclusive</p>
                         </div>
                     </div>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-700 text-[10px] font-black rounded-full uppercase">Global</span>
+                    <span class="px-3 py-1 bg-gray-100 text-gray-600 text-[10px] font-black rounded-full uppercase border border-gray-200">Global A-List</span>
                 </div>
             </div>
         </div>
@@ -94,5 +148,6 @@
             <span class="text-[8px] font-bold uppercase mt-1 tracking-tighter">AI</span>
         </a>
     </nav>
+    <script src="js/creator-charts.js"></script>
 </body>
 </html>

@@ -48,6 +48,12 @@ class CommandCenter {
         const manualBtn = document.getElementById('btn-manual-report');
         const loggerInput = document.getElementById('input-brand-logger');
         const loggerBtn = document.getElementById('btn-brand-logger');
+        
+        const discordInput = document.getElementById('input-discord-drafter');
+        const discordBtn = document.getElementById('btn-discord-drafter');
+        
+        const emailInput = document.getElementById('input-email-composer');
+        const emailBtn = document.getElementById('btn-email-composer');
 
         if (fridayBtn) {
             fridayBtn.addEventListener('click', () => this.triggerWebhook(fridayBtn, this.webhooks.FRIDAY_WRAP));
@@ -65,11 +71,30 @@ class CommandCenter {
             loggerBtn.addEventListener('click', () => {
                 const text = loggerInput.value.trim();
                 if (text) {
-                    // Pre-confirmation preview would go here
                     if(confirm(`Send to Brand Deal Logger?\n\n"${text}"`)) {
                         this.triggerWebhook(loggerBtn, this.webhooks.LOGGER, { text });
                         loggerInput.value = '';
                     }
+                }
+            });
+        }
+
+        if (discordBtn && discordInput) {
+            discordBtn.addEventListener('click', () => {
+                const text = discordInput.value.trim();
+                if (text) {
+                    this.triggerWebhook(discordBtn, this.webhooks.DISCORD, { prompt: text, platform: 'discord' });
+                    discordInput.value = '';
+                }
+            });
+        }
+
+        if (emailBtn && emailInput) {
+            emailBtn.addEventListener('click', () => {
+                const text = emailInput.value.trim();
+                if (text) {
+                    this.triggerWebhook(emailBtn, this.webhooks.EMAIL, { prompt: text, platform: 'email' });
+                    emailInput.value = '';
                 }
             });
         }

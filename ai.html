@@ -68,13 +68,50 @@
         </div>
 
         <!-- Brand Deal Logger -->
-        <div class="glass-card mx-2 p-4 mb-32">
-            <h3 class="font-extrabold text-gray-900 mb-2 px-1">Brand Deal Logger</h3>
-            <div class="flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-2 border border-gray-100">
-                <input id="input-brand-logger" type="text" placeholder="E.g. Just signed Sony for 15k..." class="bg-transparent flex-1 border-none focus:ring-0 text-sm font-medium">
+        <div class="glass-card mx-2 p-5 mb-6 border-l-4 border-gray-900">
+            <div class="flex items-center gap-2 mb-3">
+                <img src="https://cdn.monday.com/assets/logos/monday_logo_icon.png" class="w-5 h-5 object-contain">
+                <h3 class="font-extrabold text-gray-900 text-sm">Brand Deal Logger</h3>
+            </div>
+            <div class="flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-3 border border-gray-100">
+                <input id="input-brand-logger" type="text" placeholder="E.g. signed Sony for 15k..." class="bg-transparent flex-1 border-none focus:ring-0 text-sm font-medium p-0">
                 <button id="btn-brand-logger" class="w-8 h-8 bg-gray-900 rounded-lg flex items-center justify-center text-white shadow-sm hover:opacity-90 transition-opacity">
                     <span class="material-symbols-outlined text-sm text-white">add_task</span>
                 </button>
+            </div>
+        </div>
+
+        <!-- Discord Message Drafter -->
+        <div class="glass-card mx-2 p-5 mb-6 border-l-4 border-indigo-500">
+            <div class="flex items-center gap-2 mb-3">
+                <img src="https://assets-global.website-files.com/6257adef93867e3d0394e36a/6257adef93867e07ca94e43e_Discord-Logo-Color.png" class="w-5 h-5 object-contain">
+                <h3 class="font-extrabold text-gray-900 text-sm">Discord Broadcaster</h3>
+            </div>
+            <div class="bg-gray-50 rounded-xl px-4 py-3 border border-gray-100 flex flex-col gap-2">
+                <textarea id="input-discord-drafter" rows="2" placeholder="Draft a congratulatory message to the US Roster for breaking 90k diamonds..." class="bg-transparent w-full border-none focus:ring-0 text-sm font-medium p-0 resize-none"></textarea>
+                <div class="flex justify-between items-center mt-1">
+                    <span class="text-[10px] text-gray-400 font-bold uppercase">#announcements</span>
+                    <button id="btn-discord-drafter" class="px-4 py-1.5 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-xs shadow-sm hover:opacity-90 transition-opacity gap-1">
+                        Draft <span class="material-symbols-outlined text-[10px]">edit_note</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Email Composer -->
+        <div class="glass-card mx-2 p-5 mb-32 border-l-4 border-red-500">
+            <div class="flex items-center gap-2 mb-3">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/2560px-Gmail_icon_%282020%29.svg.png" class="w-5 h-5 object-contain">
+                <h3 class="font-extrabold text-gray-900 text-sm">Email Composer</h3>
+            </div>
+            <div class="bg-gray-50 rounded-xl px-4 py-3 border border-gray-100 flex flex-col gap-2">
+                <textarea id="input-email-composer" rows="2" placeholder="Tell the investors that we are tracking 8% ahead of GMV goals..." class="bg-transparent w-full border-none focus:ring-0 text-sm font-medium p-0 resize-none"></textarea>
+                <div class="flex justify-between items-center mt-1">
+                    <span class="text-[10px] text-gray-400 font-bold uppercase">Target: Investors</span>
+                    <button id="btn-email-composer" class="px-4 py-1.5 bg-red-600 rounded-lg flex items-center justify-center text-white font-bold text-xs shadow-sm hover:opacity-90 transition-opacity gap-1">
+                        Compose <span class="material-symbols-outlined text-[10px]">send</span>
+                    </button>
+                </div>
             </div>
         </div>
     </main>

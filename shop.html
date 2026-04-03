@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop Momentum - TABOOST</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     <style>
@@ -27,52 +28,156 @@
     </header>
 
     <main class="max-w-4xl mx-auto px-4 pt-8">
-        <h1 class="text-2xl font-extrabold text-gray-900 mb-6 px-2">Shop Momentum</h1>
+        <h1 class="text-2xl font-extrabold text-gray-900 mb-6 px-2">Shop Analytics</h1>
+
+        <!-- Monthly Trend Tracker -->
+        <div class="px-2 mb-6">
+            <div class="glass-card p-4 flex justify-between items-center text-center">
+                <div>
+                    <p class="text-[9px] font-bold text-gray-400 uppercase">Jan</p>
+                    <p class="text-sm font-extrabold text-gray-900">$5.1M</p>
+                </div>
+                <div class="w-8 border-t-2 border-dashed border-gray-200"></div>
+                <div>
+                    <p class="text-[9px] font-bold text-gray-400 uppercase">Feb</p>
+                    <p class="text-sm font-extrabold text-gray-900">$7.2M</p>
+                </div>
+                <div class="w-8 bg-green-100 text-green-700 text-[8px] font-black py-0.5 rounded-full flex justify-center items-center">
+                    +25%
+                </div>
+                <div>
+                    <p class="text-[9px] font-bold text-gray-400 uppercase">Mar</p>
+                    <p class="text-sm font-extrabold text-[#E91E63]">$8.95M</p>
+                </div>
+            </div>
+        </div>
 
         <!-- Metrics Grid -->
         <div class="grid grid-cols-2 gap-4 px-2 mb-8">
             <div class="glass-card p-4">
                 <p class="text-[11px] font-bold text-gray-500 uppercase tracking-wider">Total GMV</p>
                 <p class="text-2xl font-extrabold text-[#E91E63] mt-1 line-gmv">$8.95M</p>
-                <p class="text-[10px] text-green-600 font-bold mt-1">↑ 12.5% vs LW</p>
             </div>
             <div class="glass-card p-4">
                 <p class="text-[11px] font-bold text-gray-500 uppercase tracking-wider">Active Products</p>
                 <p class="text-2xl font-extrabold text-gray-900 mt-1">1,248</p>
-                <p class="text-[10px] text-gray-500 font-medium mt-1">Across 15 categories</p>
             </div>
         </div>
 
-        <!-- Leaderboard -->
-        <div class="glass-card mx-2 p-6">
-            <h3 class="font-extrabold text-gray-900 mb-4">Top Performing Creators</h3>
+        <!-- Charts Row -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-2 mb-8">
+            <!-- Stacked Bar: TaP vs Live GMV -->
+            <div class="glass-card p-6">
+                <h3 class="font-extrabold text-gray-900 mb-4 text-sm">Top 15 Creators: TaP vs LIVE</h3>
+                <div class="h-64 relative w-full">
+                    <canvas id="shopStackedChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Donut: Commission Breakdown -->
+            <div class="glass-card p-6">
+                <h3 class="font-extrabold text-gray-900 mb-4 text-sm">Commission Breakdown</h3>
+                <div class="h-64 relative w-full flex justify-center">
+                    <canvas id="commissionDonutChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Manager Performance -->
+        <div class="glass-card mx-2 p-6 mb-8">
+            <h3 class="font-extrabold text-gray-900 mb-4">Manager Performance (GMV)</h3>
+            <div class="space-y-6">
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-bold text-gray-700 uppercase">NICOLE</span>
+                        <span class="text-xs font-bold text-[#E91E63]">$4.1M</span>
+                    </div>
+                    <div class="w-full bg-gray-100 rounded-full h-2">
+                        <div class="bg-[#E91E63] h-2 rounded-full" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-bold text-gray-700 uppercase">CARA</span>
+                        <span class="text-xs font-bold text-[#E91E63]">$2.8M</span>
+                    </div>
+                    <div class="w-full bg-gray-100 rounded-full h-2">
+                        <div class="bg-[#E91E63] h-2 rounded-full opacity-60" style="width: 60%"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-bold text-gray-700 uppercase">EMILEE</span>
+                        <span class="text-xs font-bold text-[#E91E63]">$2.0M</span>
+                    </div>
+                    <div class="w-full bg-gray-100 rounded-full h-2">
+                        <div class="bg-[#E91E63] h-2 rounded-full opacity-30" style="width: 45%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leaderboards -->
+        <div class="glass-card mx-2 p-6 mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="font-extrabold text-gray-900">Leaderboards</h3>
+                <select class="text-xs font-bold border-none bg-gray-50 rounded-lg py-1 px-2 pr-8 focus:ring-0">
+                    <option>TaP Leaders</option>
+                    <option>Sales Leaders</option>
+                    <option>Live Leaders</option>
+                </select>
+            </div>
             <div class="space-y-4">
                 <div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-[#E91E63] font-bold text-xs">AB</div>
+                        <div class="w-8 h-8 rounded-full bg-pink-100 flex items-center justify-center text-[#E91E63] font-bold text-[10px]">1</div>
                         <div>
                             <p class="text-sm font-bold text-gray-900">Allee Baray</p>
-                            <p class="text-[10px] text-gray-500 font-bold uppercase">Beauty & Lifestyle</p>
                         </div>
                     </div>
                     <div class="text-right">
                         <p class="text-sm font-extrabold text-[#E91E63]">$422k</p>
-                        <p class="text-[10px] text-green-600 font-bold">+15%</p>
                     </div>
                 </div>
                 <div class="flex items-center justify-between p-3 bg-white border border-gray-100 rounded-xl">
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold text-xs">SL</div>
+                        <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 font-bold text-[10px]">2</div>
                         <div>
                             <p class="text-sm font-bold text-gray-900">Sophia Lee</p>
-                            <p class="text-[10px] text-gray-500 font-bold uppercase">Fashion</p>
                         </div>
                     </div>
                     <div class="text-right">
-                        <p class="text-sm font-extrabold text-[#E91E63]">$385k</p>
-                        <p class="text-[10px] text-green-600 font-bold">+8.2%</p>
+                        <p class="text-sm font-extrabold text-gray-900">$385k</p>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Product Catalog -->
+        <div class="glass-card mx-2 p-6 mb-12">
+            <h3 class="font-extrabold text-gray-900 mb-4">Top Performing Products</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr>
+                            <th class="text-[10px] font-bold text-gray-400 uppercase border-b border-gray-100 pb-2">Product</th>
+                            <th class="text-[10px] font-bold text-gray-400 uppercase border-b border-gray-100 pb-2">Items Sold</th>
+                            <th class="text-[10px] font-bold text-gray-400 uppercase border-b border-gray-100 pb-2">Comm. %</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <tr>
+                            <td class="py-3 border-b border-gray-50 font-bold text-gray-900">Dyson Airwrap</td>
+                            <td class="py-3 border-b border-gray-50 text-gray-600 font-medium">1,240</td>
+                            <td class="py-3 border-b border-gray-50 text-[#E91E63] font-bold">12%</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 border-b border-gray-50 font-bold text-gray-900">Summer Dress Floral</td>
+                            <td class="py-3 border-b border-gray-50 text-gray-600 font-medium">850</td>
+                            <td class="py-3 border-b border-gray-50 text-[#E91E63] font-bold">15%</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </main>
@@ -100,10 +205,7 @@
             <span class="text-[8px] font-bold uppercase mt-1 tracking-tighter">AI</span>
         </a>
     </nav>
-    <script>
-        // Update GMV from localStorage if available
-        const savedGmv = localStorage.getItem('totalGmv');
-        if (savedGmv) document.querySelector('.line-gmv').innerText = savedGmv;
-    </script>
+    <!-- Scripts -->
+    <script src="js/shop-charts.js"></script>
 </body>
 </html>

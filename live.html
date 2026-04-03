@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LIVE Performance - TABOOST</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     <style>
@@ -16,7 +17,7 @@
     <!-- Header -->
     <header class="bg-white border-b border-gray-100 px-6 py-4 flex justify-between items-center sticky top-0 z-50">
         <button class="material-symbols-outlined text-gray-600">menu</button>
-        <span class="font-black text-2xl tracking-tighter text-[#E91E63]">TABOOST</span>
+        <span class="font-black text-2xl tracking-tighter text-[#4F46E5] text-purple-600">TABOOST</span>
         <div class="flex items-center gap-3">
             <div class="text-right hidden sm:block">
                 <p class="text-sm font-bold text-gray-900">Marco</p>
@@ -29,67 +30,150 @@
     <main class="max-w-4xl mx-auto px-4 pt-8">
         <h1 class="text-2xl font-extrabold text-gray-900 mb-6 px-2">LIVE Analytics</h1>
 
-        <!-- Metrics Grid -->
+        <!-- US vs UK Split Comparison -->
         <div class="grid grid-cols-2 gap-4 px-2 mb-8">
-            <div class="glass-card p-4">
-                <p class="text-[11px] font-bold text-gray-500 uppercase tracking-wider">LIVE Revenue MTD</p>
-                <p class="text-2xl font-extrabold text-[#E91E63] mt-1">$154k</p>
-                <p class="text-[10px] text-red-600 font-bold mt-1">↓ 4.2% vs LW</p>
+            <div class="glass-card p-4 border-l-4 border-indigo-500">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1">US Roster</p>
+                        <p class="text-2xl font-extrabold text-indigo-600">92k 💎</p>
+                        <p class="text-[10px] text-green-600 font-bold mt-1">800 Creators</p>
+                    </div>
+                    <span class="text-xl">🇺🇸</span>
+                </div>
             </div>
-            <div class="glass-card p-4">
-                <p class="text-[11px] font-bold text-gray-500 uppercase tracking-wider">Concurrent Viewers</p>
-                <p class="text-2xl font-extrabold text-gray-900 mt-1">12.4k</p>
-                <p class="text-[10px] text-green-600 font-bold mt-1">↑ Peak Spike</p>
+            <div class="glass-card p-4 border-l-4 border-purple-500">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1">UK Roster</p>
+                        <p class="text-2xl font-extrabold text-purple-600">62k 💎</p>
+                        <p class="text-[10px] text-red-600 font-bold mt-1">450 Creators</p>
+                    </div>
+                    <span class="text-xl">🇬🇧</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tier Progression + Scatter Plot Row -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-2 mb-8">
+            <!-- Efficiency Scatter -->
+            <div class="glass-card p-6">
+                <h3 class="font-extrabold text-gray-900 mb-4 text-sm">Efficiency Map (Hours vs 💎)</h3>
+                <div class="h-64 relative w-full">
+                    <canvas id="efficiencyScatterChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Tier Progression Bar -->
+            <div class="glass-card p-6">
+                <h3 class="font-extrabold text-gray-900 mb-4 text-sm">Tier Goal Progressions</h3>
+                <div class="h-64 relative w-full">
+                    <canvas id="tierProgressBarChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Diamond Leaderboard -->
+        <div class="glass-card mx-2 p-6 mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="font-extrabold text-gray-900">Diamond Hierarchy</h3>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr>
+                            <th class="text-[10px] font-bold text-gray-400 uppercase border-b border-gray-100 pb-2">Creator</th>
+                            <th class="text-[10px] font-bold text-gray-400 uppercase border-b border-gray-100 pb-2">Total Diamonds</th>
+                            <th class="text-[10px] font-bold text-gray-400 uppercase border-b border-gray-100 pb-2">Tier Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <tr>
+                            <td class="py-3 border-b border-gray-50 font-bold text-gray-900 flex items-center gap-2">
+                                <div class="w-6 h-6 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold text-[8px]">JL</div>
+                                Jonathan L
+                            </td>
+                            <td class="py-3 border-b border-gray-50 text-indigo-600 font-extrabold">25,400 💎</td>
+                            <td class="py-3 border-b border-gray-50">
+                                <span class="px-2 py-0.5 bg-green-100 text-green-700 text-[9px] font-black rounded-full flex items-center w-max gap-1">
+                                    <span class="material-symbols-outlined text-[10px]">arrow_upward</span> UP
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 border-b border-gray-50 font-bold text-gray-900 flex items-center gap-2">
+                                <div class="w-6 h-6 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold text-[8px]">MK</div>
+                                Mya K
+                            </td>
+                            <td class="py-3 border-b border-gray-50 text-purple-600 font-extrabold">21,200 💎</td>
+                            <td class="py-3 border-b border-gray-50">
+                                <span class="px-2 py-0.5 bg-red-100 text-red-700 text-[9px] font-black rounded-full flex items-center w-max gap-1">
+                                    <span class="material-symbols-outlined text-[10px]">arrow_downward</span> DOWN
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
         <!-- Manager Performance -->
         <div class="glass-card mx-2 p-6 mb-8">
-            <h3 class="font-extrabold text-gray-900 mb-4">Manager Performance</h3>
+            <h3 class="font-extrabold text-gray-900 mb-4">Manager Breakdown</h3>
             <div class="space-y-6">
                 <div>
                     <div class="flex justify-between items-center mb-2">
-                        <span class="text-xs font-bold text-gray-700 uppercase">Carrington</span>
-                        <span class="text-xs font-bold text-[#E91E63]">1.2M 💎</span>
+                        <span class="text-xs font-bold text-gray-700 uppercase">CARRINGTON</span>
+                        <span class="text-xs font-bold text-indigo-600">1.2M 💎</span>
                     </div>
                     <div class="w-full bg-gray-100 rounded-full h-2">
-                        <div class="bg-[#E91E63] h-2 rounded-full" style="width: 85%"></div>
+                        <div class="bg-indigo-500 h-2 rounded-full" style="width: 85%"></div>
                     </div>
                 </div>
                 <div>
                     <div class="flex justify-between items-center mb-2">
-                        <span class="text-xs font-bold text-gray-700 uppercase">Eliza</span>
-                        <span class="text-xs font-bold text-[#E91E63]">840k 💎</span>
+                        <span class="text-xs font-bold text-gray-700 uppercase">ELIZA</span>
+                        <span class="text-xs font-bold text-indigo-600">840k 💎</span>
                     </div>
                     <div class="w-full bg-gray-100 rounded-full h-2">
-                        <div class="bg-[#E91E63] h-2 rounded-full opacity-60" style="width: 60%"></div>
+                        <div class="bg-indigo-500 h-2 rounded-full opacity-60" style="width: 60%"></div>
                     </div>
                 </div>
                 <div>
                     <div class="flex justify-between items-center mb-2">
-                        <span class="text-xs font-bold text-gray-700 uppercase">Ruta</span>
-                        <span class="text-xs font-bold text-[#E91E63]">420k 💎</span>
+                        <span class="text-xs font-bold text-gray-700 uppercase">RUTA</span>
+                        <span class="text-xs font-bold text-indigo-600">420k 💎</span>
                     </div>
                     <div class="w-full bg-gray-100 rounded-full h-2">
-                        <div class="bg-[#E91E63] h-2 rounded-full opacity-30" style="width: 30%"></div>
+                        <div class="bg-indigo-500 h-2 rounded-full opacity-30" style="width: 30%"></div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Reward Events -->
-        <div class="glass-card mx-2 p-6">
+        <!-- Reward Events Log -->
+        <div class="glass-card mx-2 p-6 mb-12">
             <h3 class="font-extrabold text-gray-900 mb-4">Active Reward Events</h3>
             <div class="space-y-3">
                 <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
                     <div class="flex items-center gap-3">
-                        <span class="material-symbols-outlined text-[#E91E63]">rocket_launch</span>
+                        <span class="material-symbols-outlined text-indigo-600">rocket_launch</span>
                         <div>
                             <p class="text-sm font-bold text-gray-900">Rank Boost</p>
                             <p class="text-[10px] text-gray-500 font-bold uppercase">Ends in 02:44:12</p>
                         </div>
                     </div>
-                    <span class="px-2 py-0.5 bg-pink-100 text-[#E91E63] text-[10px] font-black rounded uppercase">2X XP</span>
+                    <span class="px-2 py-0.5 bg-indigo-100 text-indigo-600 text-[10px] font-black rounded uppercase">2X XP</span>
+                </div>
+                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-purple-600">music_note</span>
+                        <div>
+                            <p class="text-sm font-bold text-gray-900">Music Cypher</p>
+                            <p class="text-[10px] text-gray-500 font-bold uppercase">Ends tomorrow</p>
+                        </div>
+                    </div>
+                    <span class="px-2 py-0.5 bg-purple-100 text-purple-600 text-[10px] font-black rounded uppercase">PK Battle</span>
                 </div>
             </div>
         </div>
@@ -105,7 +189,7 @@
             <span class="material-symbols-outlined">shopping_bag</span>
             <span class="text-[8px] font-bold uppercase mt-1 tracking-tighter">Shop</span>
         </a>
-        <a href="live.html" class="flex flex-col items-center text-[#E91E63]">
+        <a href="live.html" class="flex flex-col items-center text-[#4F46E5]">
             <span class="material-symbols-outlined">live_tv</span>
             <span class="text-[8px] font-bold uppercase mt-1 tracking-tighter">Live</span>
         </a>
@@ -118,5 +202,6 @@
             <span class="text-[8px] font-bold uppercase mt-1 tracking-tighter">AI</span>
         </a>
     </nav>
+    <script src="js/live-charts.js"></script>
 </body>
 </html>

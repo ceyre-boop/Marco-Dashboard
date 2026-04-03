@@ -7,7 +7,9 @@ window.TABOOST_CONFIG = {
         FRIDAY_WRAP: 'https://taboost.app.n8n.cloud/webhook-test/stitch-sync',
         MONDAY_BRIEFING: 'https://taboost.app.n8n.cloud/webhook-test/stitch-sync',
         MANUAL_REPORT: 'https://taboost.app.n8n.cloud/webhook-test/stitch-sync',
-        LOGGER: 'https://taboost.app.n8n.cloud/webhook-test/stitch-sync'
+        LOGGER: 'https://taboost.app.n8n.cloud/webhook-test/stitch-sync',
+        DISCORD: 'https://taboost.app.n8n.cloud/webhook-test/stitch-sync',
+        EMAIL: 'https://taboost.app.n8n.cloud/webhook-test/stitch-sync'
     },
     
     // Phase 4: Environment Variables
