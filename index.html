@@ -243,24 +243,10 @@
         </a>
     </nav>
 
-    <script src="js/summary.js"></script>
-    <script>
-        // Temporary test data injection if summary.js doesn't exist yet
-        if (typeof summaryData === 'undefined') {
-            const summaryData = {
-                gmv: "$1,842,036",
-                live: "$649,275",
-                creators: "1,452",
-                commissions: "$210,450",
-                topCreator: { name: "Samantha S", handle: "@samanthasingsit", gmv: "82k", live: "15k" }
-            };
-            document.getElementById('total-gmv').innerText = summaryData.gmv;
-            document.getElementById('total-live').innerText = summaryData.live;
-            document.getElementById('creator-count').innerText = summaryData.creators;
-            document.getElementById('total-commissions').innerText = summaryData.commissions;
-            document.getElementById('top-creator-name').innerText = summaryData.topCreator.name;
-            document.getElementById('top-creator-handle').innerText = summaryData.topCreator.handle;
-        }
-    </script>
+    <!-- Scripts: Phase 2 API Configuration -->
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/summary.js"></script> <!-- Included for graceful fallback during 404 local testing -->
+    <script src="js/data-binder.js"></script>
 </body>
 </html>
